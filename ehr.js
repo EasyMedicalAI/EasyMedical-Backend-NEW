@@ -224,9 +224,15 @@ const getJson = async (url, headers) => {
   return body;
 };
 
-const entriesOf = (bundle) => (bundle?.entry || []).map((e) => e.resource).filter(Boolean);
+// Drops Epic's OperationOutcome entries (its error format), which can arrive inside a bundle
+const entriesOf = (bundle) =>
+  (bundle?.entry || []).map((e) => e.resource).filter((r) => r && r.resourceType !== 'OperationOutcome');
 
 const codeText = (resource) => resource.code?.text || resource.code?.coding?.[0]?.display || 'Unknown';
+
+// A procedure only counts if Epic gave it a name or a date. Otherwise it's an empty placeholder.
+const isRealProcedure = (r) =>
+  codeText(r) !== 'Unknown' || Boolean(r.performedDateTime || r.performedPeriod?.start || r.performedDate);
 
 async function fetchPatientBundle(system, accessToken, patientId) {
   const headers = { Authorization: `Bearer ${accessToken}`, Accept: 'application/fhir+json' };
@@ -243,6 +249,20 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     query(`/AllergyIntolerance?patient=${patientId}&_count=100`),
   ]);
 
+  // Normal range as the server sent it (FHIR Observation.referenceRange)
+  const referenceRangeOf = (r) => {
+    const range = r.referenceRange?.[0];
+    if (!range) return '';
+    if (range.text) return range.text;
+    const low = range.low?.value;
+    const high = range.high?.value;
+    const unit = range.low?.unit || range.high?.unit || '';
+    if (low != null && high != null) return `${low}-${high} ${unit}`.trim();
+    if (high != null) return `<${high} ${unit}`.trim();
+    if (low != null) return `>${low} ${unit}`.trim();
+    return '';
+  };
+
   // Only keep observations that have both a value and a date, so nothing gets stamped with the sync date
   const observations = [...entriesOf(labs), ...entriesOf(vitals)]
     .map((r) => ({
@@ -250,6 +270,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
       code: codeText(r),
       value: r.valueQuantity?.value ?? r.valueString ?? '',
       unit: r.valueQuantity?.unit || '',
+      referenceRange: referenceRangeOf(r),
       date: r.effectiveDateTime || r.effectiveDate || '',
     }))
     .filter((o) => o.value !== '' && o.date);
@@ -258,7 +279,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     patient,
     medications: entriesOf(meds),
     observations,
-    procedures: entriesOf(procedures),
+    procedures: entriesOf(procedures).filter(isRealProcedure),
     diagnostics: entriesOf(diagnostics),
     conditions: entriesOf(conditions).map((r) => ({
       id: r.id,
