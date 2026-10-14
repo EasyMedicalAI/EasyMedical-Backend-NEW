@@ -8,6 +8,7 @@ const ENTRY_TYPES = [
   'weight', 'blood_pressure', 'height', 'blood_type', 'birthday', 'gender',
   'start_medication', 'stop_medication', 'add_condition', 'add_allergy',
   'remove_condition', 'remove_allergy',
+  'log_sleep', 'log_exercise', 'log_meal',
   'add_appointment', 'add_vaccine', 'add_emergency_contact', 'add_insurance', 'set_pharmacy',
   'add_surgery', 'add_family_history', 'add_past_condition', 'add_hospitalization', 'add_screening',
   'unclear',
@@ -53,6 +54,10 @@ const LOG_TOOL = {
             address: { type: 'string', description: 'Pharmacy address, only if stated' },
             family_member: { type: 'string', description: 'Who in the family, for example mother' },
             notes: { type: 'string' },
+            hours: { type: 'number', description: 'Hours of sleep (for example 7.5)' },
+            minutes: { type: 'number', description: 'Minutes of exercise' },
+            activity: { type: 'string', description: 'The kind of exercise, for example walking or cycling' },
+            meal: { type: 'string', description: 'What they ate or drank, in plain words' },
             message: { type: 'string', description: 'For unclear entries: a short question to ask the person' },
           },
           required: ['type'],
@@ -136,6 +141,20 @@ function normalizeEntries(raw, today) {
       case 'remove_allergy': {
         const name = clean(e.name);
         return name ? { type: 'remove_allergy', allergy_name: name } : unclear('Which allergy should I remove?');
+      }
+      case 'log_sleep': {
+        const hours = num(e.hours);
+        if (hours === undefined || hours < 0 || hours > 24) return unclear('How many hours did you sleep?');
+        return { type: 'log_sleep', date, hours: Math.round(hours * 10) / 10 };
+      }
+      case 'log_exercise': {
+        const minutes = num(e.minutes);
+        if (minutes === undefined || minutes <= 0 || minutes > 1440) return unclear('How many minutes did you exercise?');
+        return { type: 'log_exercise', date, minutes: Math.round(minutes), activity: clean(e.activity) };
+      }
+      case 'log_meal': {
+        const meal = clean(e.meal) || clean(e.name);
+        return meal ? { type: 'log_meal', date, meal } : unclear('What did you eat or drink?');
       }
       case 'add_appointment': {
         if (!isDate(e.date)) return unclear('What is the date of the appointment?');
@@ -222,6 +241,7 @@ Rules:
 - Stopping a medication: if the name matches a current medication, use that exact name.
 - Over-the-counter medicines and supplements use medication_kind "otc".
 - Family history: the family member goes in family_member, the condition goes in name.
+- Sleep: log hours in log_sleep. Exercise: minutes in log_exercise, with the activity if stated. Meals: the plain description in log_meal. Do not estimate calories.
 - Removing a condition or allergy ("I'm no longer allergic to penicillin"): use remove_condition or remove_allergy with the name in name.
 - Hospitalizations and surgeries: put the reason or surgery name in name, and the date in date.
 - Dates: convert to YYYY-MM-DD. If only a month and year are given, use the first of that month.
