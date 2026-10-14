@@ -266,6 +266,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
   const query = (resourcePath) =>
     getJson(`${system.fhirBase}${resourcePath}`, headers).catch((error) => {
       if (error.status === 401) throw error;
+      console.warn(`⚠️ ${resourcePath.split('?')[0]} failed: ${error.status || ''} ${String(error.message || error).slice(0, 300)}`);
       return null;
     });
 
@@ -281,6 +282,13 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     query(`/Condition?patient=${patientId}&_count=100`),
     query(`/AllergyIntolerance?patient=${patientId}&_count=100`),
   ]);
+
+  // Debug: what Epic returned for vital signs, so readings that get dropped can be found
+  const vitalEntries = vitals?.entry || [];
+  console.log(`🩺 vital-signs for ${patientId}: ${vitals ? vitalEntries.length : 'request failed'} entries`);
+  if (vitalEntries.length > 0) {
+    vitalEntries.slice(0, 3).forEach((e, i) => console.log(`🩺 vital ${i + 1}: ${JSON.stringify(e.resource).slice(0, 1200)}`));
+  }
 
   // Normal range as the server sent it (FHIR Observation.referenceRange)
   const referenceRangeOf = (r) => {
