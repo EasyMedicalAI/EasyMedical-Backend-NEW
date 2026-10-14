@@ -212,6 +212,11 @@ const tokenHandler = (req, res) => {
 // Fetches one page of a FHIR search
 const getOnePage = async (url, headers) => {
   const res = await fetch(url, { headers });
+  if (res.status === 401) {
+    const error = new Error('Epic sign-in has expired');
+    error.status = 401;
+    throw error;
+  }
   if (!res.ok) {
     console.warn(`FHIR query failed (${res.status}): ${url.split('?')[0]}`);
     return null;
@@ -258,7 +263,11 @@ const isRealProcedure = (r) =>
 
 async function fetchPatientBundle(system, accessToken, patientId) {
   const headers = { Authorization: `Bearer ${accessToken}`, Accept: 'application/fhir+json' };
-  const query = (resourcePath) => getJson(`${system.fhirBase}${resourcePath}`, headers).catch(() => null);
+  const query = (resourcePath) =>
+    getJson(`${system.fhirBase}${resourcePath}`, headers).catch((error) => {
+      if (error.status === 401) throw error;
+      return null;
+    });
 
   const [patient, meds, labs, vitals, procedures, diagnostics, conditions, allergies] = await Promise.all([
     query(`/Patient/${patientId}`),
@@ -352,6 +361,9 @@ const patientDataHandler = (system) => async (req, res) => {
   try {
     res.json(await fetchPatientBundle(system, accessToken, patientId));
   } catch (error) {
+    if (error.status === 401) {
+      return res.status(401).json({ error: 'Epic sign-in has expired. Reconnect Epic in Settings.', expired: true });
+    }
     console.error(`Patient data error (${system.id}):`, error);
     res.status(500).json({ error: 'Failed to fetch patient data' });
   }
