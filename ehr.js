@@ -209,7 +209,8 @@ const tokenHandler = (req, res) => {
   });
 };
 
-const getJson = async (url, headers) => {
+// Fetches one page of a FHIR search
+const getOnePage = async (url, headers) => {
   const res = await fetch(url, { headers });
   if (!res.ok) {
     console.warn(`FHIR query failed (${res.status}): ${url.split('?')[0]}`);
@@ -224,7 +225,28 @@ const getJson = async (url, headers) => {
   return body;
 };
 
-// Drops Epic's OperationOutcome entries (its error format), which can arrive inside a bundle
+// Follows the bundle's "next" link so long result lists aren't cut off after one page
+const MAX_PAGES = 20;
+const nextLink = (bundle) => bundle?.link?.find((l) => l.relation === 'next')?.url;
+
+const getJson = async (url, headers) => {
+  const first = await getOnePage(url, headers);
+  if (!first || !Array.isArray(first.entry)) return first;
+
+  let bundle = first;
+  let next = nextLink(first);
+  let pages = 1;
+  while (next && pages < MAX_PAGES) {
+    const page = await getOnePage(next, headers);
+    if (!page) break;
+    bundle = { ...bundle, entry: [...bundle.entry, ...(page.entry || [])] };
+    next = nextLink(page);
+    pages++;
+  }
+  if (next) console.warn(`Stopped after ${MAX_PAGES} pages; more results exist for ${url.split('?')[0]}`);
+  return { ...bundle, link: [] };
+};
+
 const entriesOf = (bundle) =>
   (bundle?.entry || []).map((e) => e.resource).filter((r) => r && r.resourceType !== 'OperationOutcome');
 
