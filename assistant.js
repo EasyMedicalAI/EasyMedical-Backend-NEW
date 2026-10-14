@@ -7,6 +7,7 @@ const GENDERS = ['Male', 'Female', 'Other'];
 const ENTRY_TYPES = [
   'weight', 'blood_pressure', 'height', 'blood_type', 'birthday', 'gender',
   'start_medication', 'stop_medication', 'add_condition', 'add_allergy',
+  'remove_condition', 'remove_allergy',
   'add_appointment', 'add_vaccine', 'add_emergency_contact', 'add_insurance', 'set_pharmacy',
   'add_surgery', 'add_family_history', 'add_past_condition', 'add_hospitalization', 'add_screening',
   'unclear',
@@ -128,6 +129,14 @@ function normalizeEntries(raw, today) {
         const name = clean(e.name);
         return name ? { type: 'add_allergy', allergy_name: name, allergy_reaction: clean(e.reaction) } : unclear('What are you allergic to?');
       }
+      case 'remove_condition': {
+        const name = clean(e.name);
+        return name ? { type: 'remove_condition', condition_name: name } : unclear('Which condition should I remove?');
+      }
+      case 'remove_allergy': {
+        const name = clean(e.name);
+        return name ? { type: 'remove_allergy', allergy_name: name } : unclear('Which allergy should I remove?');
+      }
       case 'add_appointment': {
         if (!isDate(e.date)) return unclear('What is the date of the appointment?');
         return { type: 'add_appointment', date: e.date, time: clean(e.time), doctor_name: clean(e.doctor_name), specialty: clean(e.specialty) };
@@ -213,6 +222,7 @@ Rules:
 - Stopping a medication: if the name matches a current medication, use that exact name.
 - Over-the-counter medicines and supplements use medication_kind "otc".
 - Family history: the family member goes in family_member, the condition goes in name.
+- Removing a condition or allergy ("I'm no longer allergic to penicillin"): use remove_condition or remove_allergy with the name in name.
 - Hospitalizations and surgeries: put the reason or surgery name in name, and the date in date.
 - Dates: convert to YYYY-MM-DD. If only a month and year are given, use the first of that month.
 - If anything is missing or unclear, return an unclear entry with a short question to ask.
