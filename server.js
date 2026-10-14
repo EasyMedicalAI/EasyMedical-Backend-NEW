@@ -12,6 +12,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const { mountEhrRoutes } = require('./ehr');
 const { mountRecordRoutes } = require('./records');
+const { mountAssistantRoutes } = require('./assistant');
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -19,6 +20,9 @@ const client = new Anthropic({
 
 // Structured extraction: every uploaded document comes back in one shape
 mountRecordRoutes(app, client);
+
+// Turns typed or dictated health notes into entries the person confirms before saving
+mountAssistantRoutes(app, client);
 
 // Chat endpoint
 app.post('/api/chat', async (req, res) => {
