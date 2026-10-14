@@ -286,15 +286,37 @@ async function fetchPatientBundle(system, accessToken, patientId) {
   };
 
   // Only keep observations that have both a value and a date, so nothing gets stamped with the sync date
+  // Blood pressure is one observation with systolic and diastolic components (LOINC 8480-6 and 8462-4)
+  const componentValue = (r, loincCode) => {
+    const component = (r.component || []).find((c) => (c.code?.coding || []).some((cd) => cd.code === loincCode));
+    return component?.valueQuantity?.value;
+  };
+
   const observations = [...entriesOf(labs), ...entriesOf(vitals)]
-    .map((r) => ({
-      id: r.id,
-      code: codeText(r),
-      value: r.valueQuantity?.value ?? r.valueString ?? '',
-      unit: r.valueQuantity?.unit || '',
-      referenceRange: referenceRangeOf(r),
-      date: r.effectiveDateTime || r.effectiveDate || '',
-    }))
+    .map((r) => {
+      const systolic = componentValue(r, '8480-6');
+      const diastolic = componentValue(r, '8462-4');
+      if (systolic != null && diastolic != null) {
+        return {
+          id: r.id,
+          code: 'Blood Pressure',
+          value: `${systolic}/${diastolic}`,
+          unit: 'mmHg',
+          systolic,
+          diastolic,
+          referenceRange: '',
+          date: r.effectiveDateTime || r.effectiveDate || '',
+        };
+      }
+      return {
+        id: r.id,
+        code: codeText(r),
+        value: r.valueQuantity?.value ?? r.valueString ?? '',
+        unit: r.valueQuantity?.unit || '',
+        referenceRange: referenceRangeOf(r),
+        date: r.effectiveDateTime || r.effectiveDate || '',
+      };
+    })
     .filter((o) => o.value !== '' && o.date);
 
   return {
