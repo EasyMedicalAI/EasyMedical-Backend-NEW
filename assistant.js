@@ -1,7 +1,22 @@
-// Turns a typed or dictated health note into structured log entries (weight, blood pressure,
-// starting or stopping a medication). The app always shows these to the person before saving.
+// Turns a typed or dictated health note into structured log entries. The app always shows these
+// to the person before saving anything.
 
-const ENTRY_TYPES = ['weight', 'blood_pressure', 'start_medication', 'stop_medication', 'unclear'];
+const ENTRY_TYPES = [
+  'weight',
+  'blood_pressure',
+  'height',
+  'blood_type',
+  'birthday',
+  'gender',
+  'start_medication',
+  'stop_medication',
+  'add_condition',
+  'add_allergy',
+  'unclear',
+];
+
+const BLOOD_TYPES = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+const GENDERS = ['Male', 'Female', 'Other'];
 
 const LOG_TOOL = {
   name: 'record_log_entries',
@@ -20,9 +35,18 @@ const LOG_TOOL = {
             weight_lbs: { type: 'number', description: 'Weight in pounds. Convert kilograms to pounds.' },
             systolic: { type: 'number', description: 'Top blood pressure number' },
             diastolic: { type: 'number', description: 'Bottom blood pressure number' },
+            feet: { type: 'number', description: 'Height: feet part' },
+            inches: { type: 'number', description: 'Height: inches part (0 to 11)' },
+            blood_type: { type: 'string', enum: BLOOD_TYPES },
+            birthday: { type: 'string', description: 'Date of birth as YYYY-MM-DD' },
+            gender: { type: 'string', enum: GENDERS },
             medication_name: { type: 'string', description: 'Medication name as stated, or the matching name from the current list' },
+            medication_kind: { type: 'string', enum: ['prescription', 'otc'], description: 'otc for over-the-counter medicines and supplements' },
             dose: { type: 'string', description: 'Dose only if they stated one' },
             instructions: { type: 'string', description: 'How it is taken, only if they stated it' },
+            condition_name: { type: 'string', description: 'A condition or diagnosis they have' },
+            allergy_name: { type: 'string', description: 'What they are allergic to' },
+            allergy_reaction: { type: 'string', description: 'The reaction, only if they stated one' },
             message: { type: 'string', description: 'For unclear entries: a short question to ask the person' },
           },
           required: ['type'],
@@ -37,37 +61,77 @@ const isDate = (value) => /^\d{4}-\d{2}-\d{2}$/.test(value || '');
 const clean = (value) => (typeof value === 'string' ? value.trim() : '');
 const num = (value) => (typeof value === 'number' && isFinite(value) ? value : undefined);
 
-// Checks values against plausible ranges. Anything outside them becomes an unclear entry instead of a saved value.
+// Ages from birthday; anything outside 0 to 120 is treated as unclear
+const birthdayIsPlausible = (day) => {
+  const birth = new Date(`${day}T12:00:00`);
+  const ageYears = (Date.now() - birth.getTime()) / (365.25 * 24 * 3600 * 1000);
+  return !isNaN(birth.getTime()) && ageYears >= 0 && ageYears <= 120;
+};
+
+const unclear = (message) => ({ type: 'unclear', message });
+
+// Checks each value against plausible ranges. Anything outside them becomes a question, not a saved value.
 function normalizeEntries(raw, today) {
   return (Array.isArray(raw) ? raw : []).map((e) => {
     const date = isDate(e.date) ? e.date : today;
-    if (e.type === 'weight') {
-      const weight = num(e.weight_lbs);
-      if (weight === undefined || weight < 50 || weight > 700) {
-        return { type: 'unclear', message: 'What is your weight in pounds?' };
+    switch (e.type) {
+      case 'weight': {
+        const weight = num(e.weight_lbs);
+        if (weight === undefined || weight < 50 || weight > 700) return unclear('What is your weight in pounds?');
+        return { type: 'weight', date, weight_lbs: Math.round(weight * 10) / 10 };
       }
-      return { type: 'weight', date, weight_lbs: Math.round(weight * 10) / 10 };
-    }
-    if (e.type === 'blood_pressure') {
-      const s = num(e.systolic);
-      const d = num(e.diastolic);
-      if (s === undefined || d === undefined || s < 60 || s > 260 || d < 30 || d > 160) {
-        return { type: 'unclear', message: 'What are the top and bottom blood pressure numbers?' };
+      case 'blood_pressure': {
+        const s = num(e.systolic);
+        const d = num(e.diastolic);
+        if (s === undefined || d === undefined || s < 60 || s > 260 || d < 30 || d > 160) {
+          return unclear('What are the top and bottom blood pressure numbers?');
+        }
+        return { type: 'blood_pressure', date, systolic: s, diastolic: d };
       }
-      return { type: 'blood_pressure', date, systolic: s, diastolic: d };
+      case 'height': {
+        const feet = num(e.feet);
+        const inches = num(e.inches) ?? 0;
+        if (feet === undefined || feet < 3 || feet > 8 || inches < 0 || inches > 11) {
+          return unclear('What is your height in feet and inches?');
+        }
+        return { type: 'height', feet, inches };
+      }
+      case 'blood_type':
+        return BLOOD_TYPES.includes(e.blood_type)
+          ? { type: 'blood_type', blood_type: e.blood_type }
+          : unclear('What is your blood type? (for example O+ or AB-)');
+      case 'birthday':
+        return isDate(e.birthday) && birthdayIsPlausible(e.birthday)
+          ? { type: 'birthday', birthday: e.birthday }
+          : unclear('What is your date of birth? (for example 09/12/1987)');
+      case 'gender':
+        return GENDERS.includes(e.gender) ? { type: 'gender', gender: e.gender } : unclear('What is your sex? (Male, Female, or Other)');
+      case 'start_medication':
+      case 'stop_medication': {
+        const name = clean(e.medication_name);
+        if (!name) return unclear('Which medication is it?');
+        return {
+          type: e.type,
+          date,
+          medication_name: name,
+          medication_kind: e.medication_kind === 'otc' ? 'otc' : 'prescription',
+          dose: clean(e.dose),
+          instructions: clean(e.instructions),
+        };
+      }
+      case 'add_condition': {
+        const name = clean(e.condition_name);
+        return name ? { type: 'add_condition', condition_name: name } : unclear('What is the condition?');
+      }
+      case 'add_allergy': {
+        const name = clean(e.allergy_name);
+        return name
+          ? { type: 'add_allergy', allergy_name: name, allergy_reaction: clean(e.allergy_reaction) }
+          : unclear('What are you allergic to?');
+      }
+      default:
+        return unclear(clean(e.message) || 'Could you say that another way?');
     }
-    if (e.type === 'start_medication' || e.type === 'stop_medication') {
-      const name = clean(e.medication_name);
-      if (!name) return { type: 'unclear', message: 'Which medication is it?' };
-      return {
-        type: e.type,
-        date,
-        medication_name: name,
-        dose: clean(e.dose),
-        instructions: clean(e.instructions),
-      };
-    }
-    return { type: 'unclear', message: clean(e.message) || 'Could you say that another way?' };
   });
 }
 
@@ -79,7 +143,7 @@ function mountAssistantRoutes(app, client) {
       const activeMedications = (Array.isArray(req.body?.activeMedications) ? req.body.activeMedications : [])
         .map(clean)
         .filter(Boolean)
-        .slice(0, 100);
+        .slice(0, 200);
 
       if (!text) return res.status(400).json({ error: 'Please type something to log' });
       if (text.length > 500) return res.status(400).json({ error: 'Please keep it under 500 characters' });
@@ -94,12 +158,13 @@ Rules:
 - Only log what the person said. Never invent a dose, date, or value.
 - One message can contain several entries. Return one entry for each.
 - Stopping a medication: if the name matches one of the current medications, use that exact name.
+- Over-the-counter medicines and supplements use medication_kind "otc".
 - If anything is unclear, return an unclear entry with a short question to ask.
 - Do not give medical advice.`;
 
       const response = await client.messages.create({
         model: 'claude-opus-5',
-        max_tokens: 1000,
+        max_tokens: 1200,
         tools: [LOG_TOOL],
         tool_choice: { type: 'tool', name: LOG_TOOL.name },
         messages: [{ role: 'user', content: prompt }],
