@@ -153,15 +153,22 @@ function normalizeExtraction(raw) {
 function mountRecordRoutes(app, client) {
   app.post('/api/vision/extract-record', async (req, res) => {
     try {
-      const { images } = req.body || {};
-      if (!Array.isArray(images) || images.length === 0) {
-        return res.status(400).json({ error: 'At least one image is required' });
+      // Photos arrive as images (JPEG). PDFs arrive as documents, and Claude reads them page by page.
+      const { images = [], documents = [] } = req.body || {};
+      if ((!Array.isArray(images) || images.length === 0) && (!Array.isArray(documents) || documents.length === 0)) {
+        return res.status(400).json({ error: 'At least one image or PDF is required' });
       }
 
-      const content = images.map((data) => ({
-        type: 'image',
-        source: { type: 'base64', media_type: 'image/jpeg', data },
-      }));
+      const content = [
+        ...images.map((data) => ({
+          type: 'image',
+          source: { type: 'base64', media_type: 'image/jpeg', data },
+        })),
+        ...documents.map((data) => ({
+          type: 'document',
+          source: { type: 'base64', media_type: 'application/pdf', data },
+        })),
+      ];
       content.push({ type: 'text', text: PROMPT });
 
       const response = await client.messages.create({
