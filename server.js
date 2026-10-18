@@ -12,6 +12,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const { mountEhrRoutes } = require('./ehr');
 const { mountRecordRoutes } = require('./records');
+const { mountMedicationRoutes } = require('./medications');
 const { mountAssistantRoutes } = require('./assistant');
 
 const client = new Anthropic({
@@ -20,6 +21,7 @@ const client = new Anthropic({
 
 // Structured extraction: every uploaded document comes back in one shape
 mountRecordRoutes(app, client);
+mountMedicationRoutes(app, client);
 
 // Turns typed or dictated health notes into entries the person confirms before saving
 mountAssistantRoutes(app, client);
