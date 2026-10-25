@@ -270,17 +270,17 @@ async function fetchPatientBundle(system, accessToken, patientId) {
       return null;
     });
 
-  const [patient, meds, statements, labs, vitals, procedures, diagnostics, conditions, allergies] = await Promise.all([
+  const [patient, meds, labs, vitals, procedures, diagnostics, conditions, allergies, immunizations] = await Promise.all([
     query(`/Patient/${patientId}`),
     // All medication orders, including stopped and completed ones, so past medications come through
     query(`/MedicationRequest?patient=${patientId}&_count=100`),
-    query(`/MedicationStatement?patient=${patientId}&_count=100`),
     query(`/Observation?patient=${patientId}&category=laboratory&_count=100`),
     query(`/Observation?patient=${patientId}&category=vital-signs&_count=100`),
     query(`/Procedure?patient=${patientId}&_count=100`),
     query(`/DiagnosticReport?patient=${patientId}&_count=100`),
     query(`/Condition?patient=${patientId}&_count=100`),
     query(`/AllergyIntolerance?patient=${patientId}&_count=100`),
+    query(`/Immunization?patient=${patientId}&_count=100`),
   ]);
 
   // Debug: what Epic returned for vital signs, so readings that get dropped can be found
@@ -341,7 +341,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
   return {
     patient,
     medications: entriesOf(meds),
-    medicationStatements: entriesOf(statements),
+    immunizations: entriesOf(immunizations),
     observations,
     procedures: entriesOf(procedures).filter(isRealProcedure),
     diagnostics: entriesOf(diagnostics),
