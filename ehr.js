@@ -169,6 +169,7 @@ const callbackHandler = (system) => async (req, res) => {
     };
     saveTokenStorage(tokens);
 
+    console.log(`🔑 ${system.id} granted scope: ${tokenData.scope || '(none reported)'}`);
     console.log(`✅ ${system.id} token stored (patient ${patientId || 'not provided'})`);
     res.status(200).send(htmlPage('Authorization Successful!', `Your ${system.name} account has been connected.`));
   } catch (error) {
@@ -218,7 +219,9 @@ const getOnePage = async (url, headers) => {
     throw error;
   }
   if (!res.ok) {
-    console.warn(`FHIR query failed (${res.status}): ${url.split('?')[0]}`);
+    // Epic's reply says why the query was refused. Only the first part is logged.
+    const reason = (await res.text().catch(() => '')).slice(0, 300);
+    console.warn(`FHIR query failed (${res.status}): ${url.split('?')[0]}${reason ? ` — ${reason}` : ''}`);
     return null;
   }
   const body = await res.json();
