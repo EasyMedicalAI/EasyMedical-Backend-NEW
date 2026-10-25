@@ -270,7 +270,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
       return null;
     });
 
-  const [patient, meds, labs, vitals, procedures, diagnostics, conditions, allergies, immunizations] = await Promise.all([
+  const [patient, meds, labs, vitals, procedures, diagnostics, conditions, allergies, immunizations, documents] = await Promise.all([
     query(`/Patient/${patientId}`),
     // All medication orders, including stopped and completed ones, so past medications come through
     query(`/MedicationRequest?patient=${patientId}&_count=100`),
@@ -281,6 +281,8 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     query(`/Condition?patient=${patientId}&_count=100`),
     query(`/AllergyIntolerance?patient=${patientId}&_count=100`),
     query(`/Immunization?patient=${patientId}&_count=100`),
+    // Clinical notes and other documents. Filtered to notes in the app, once Epic's responses are checked.
+    query(`/DocumentReference?patient=${patientId}&_count=100`),
   ]);
 
   // Debug: what Epic returned for vital signs, so readings that get dropped can be found
@@ -342,6 +344,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     patient,
     medications: entriesOf(meds),
     immunizations: entriesOf(immunizations),
+    documents: entriesOf(documents),
     observations,
     procedures: entriesOf(procedures).filter(isRealProcedure),
     diagnostics: entriesOf(diagnostics),
