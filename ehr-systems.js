@@ -12,7 +12,7 @@
 // The app lists a system only when its fhirBase and both credentials are set.
 
 const EPIC_SCOPES =
-  'openid fhirUser patient/Patient.read patient/Medication.read patient/Observation.read ' +
+  'openid fhirUser patient/Patient.read patient/Medication.read patient/MedicationRequest.read patient/Observation.read ' +
   'patient/Procedure.read patient/DiagnosticReport.read patient/AllergyIntolerance.read ' +
   'patient/Condition.read patient/Appointment.read patient/Immunization.read';
 
