@@ -285,6 +285,22 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     query(`/DocumentReference?patient=${patientId}&_count=100`),
   ]);
 
+  // Debug: what Epic returned for documents. Codes and flags only, no note text.
+  const documentEntries = documents?.entry || [];
+  console.log(`📄 documents for ${patientId}: ${documents ? documentEntries.length : 'request failed'} entries`);
+  documentEntries.slice(0, 5).forEach((e, i) => {
+    const r = e.resource || {};
+    console.log(`📄 document ${i + 1}: ${JSON.stringify({
+      type: r.type?.coding?.map((c) => c.code),
+      category: r.category?.map((c) => c.coding?.map((x) => x.code)),
+      content: (r.content || []).map((c) => ({
+        contentType: c.attachment?.contentType,
+        inlineData: !!c.attachment?.data,
+        hasUrl: !!c.attachment?.url,
+      })),
+    })}`);
+  });
+
   // Debug: what Epic returned for vital signs, so readings that get dropped can be found
   const vitalEntries = vitals?.entry || [];
   console.log(`🩺 vital-signs for ${patientId}: ${vitals ? vitalEntries.length : 'request failed'} entries`);
