@@ -262,7 +262,7 @@ const codeText = (resource) => resource.code?.text || resource.code?.coding?.[0]
 
 // Epic links each document to its text through an attachment URL (a Binary resource). This fetches the text,
 // preferring HTML and then plain text. Documents without a readable text link are returned without noteText.
-const withNoteText = async (documents, accessToken) =>
+const withNoteText = async (documents, accessToken, fhirBase) =>
   Promise.all(
     documents.map(async (doc) => {
       const attachments = (doc.content || []).map((c) => c.attachment).filter((a) => a && a.url);
@@ -270,7 +270,9 @@ const withNoteText = async (documents, accessToken) =>
         attachments.find((a) => a.contentType === 'text/html') || attachments.find((a) => a.contentType === 'text/plain');
       if (!attachment) return doc;
       try {
-        const res = await fetch(attachment.url, {
+        // Epic gives the link relative to the FHIR base, like "Binary/123", so it's joined to that base first
+        const url = /^https?:\/\//.test(attachment.url) ? attachment.url : `${fhirBase}/${attachment.url.replace(/^\//, '')}`;
+        const res = await fetch(url, {
           headers: { Authorization: `Bearer ${accessToken}`, Accept: attachment.contentType },
         });
         if (!res.ok) {
@@ -388,7 +390,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     patient,
     medications: entriesOf(meds),
     immunizations: entriesOf(immunizations),
-    documents: await withNoteText(entriesOf(documents), accessToken),
+    documents: await withNoteText(entriesOf(documents), accessToken, system.fhirBase),
     observations,
     procedures: entriesOf(procedures).filter(isRealProcedure),
     diagnostics: entriesOf(diagnostics),
