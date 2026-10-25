@@ -14,7 +14,7 @@
 const EPIC_SCOPES =
   'openid fhirUser patient/Patient.read patient/Medication.read patient/MedicationRequest.read patient/Observation.read ' +
   'patient/Procedure.read patient/DiagnosticReport.read patient/AllergyIntolerance.read ' +
-  'patient/Condition.read patient/Appointment.read patient/Immunization.read patient/DocumentReference.read';
+  'patient/Condition.read patient/Appointment.read patient/Immunization.read patient/DocumentReference.read patient/Binary.read';
 
 // Other vendors may need different scope names once registered. Adjust per system.
 const DEFAULT_SCOPES = EPIC_SCOPES;

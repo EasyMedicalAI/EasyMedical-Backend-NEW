@@ -260,6 +260,31 @@ const entriesOf = (bundle) =>
 
 const codeText = (resource) => resource.code?.text || resource.code?.coding?.[0]?.display || 'Unknown';
 
+// Epic links each document to its text through an attachment URL (a Binary resource). This fetches the text,
+// preferring HTML and then plain text. Documents without a readable text link are returned without noteText.
+const withNoteText = async (documents, accessToken) =>
+  Promise.all(
+    documents.map(async (doc) => {
+      const attachments = (doc.content || []).map((c) => c.attachment).filter((a) => a && a.url);
+      const attachment =
+        attachments.find((a) => a.contentType === 'text/html') || attachments.find((a) => a.contentType === 'text/plain');
+      if (!attachment) return doc;
+      try {
+        const res = await fetch(attachment.url, {
+          headers: { Authorization: `Bearer ${accessToken}`, Accept: attachment.contentType },
+        });
+        if (!res.ok) {
+          console.warn(`📄 note text failed (${res.status})`);
+          return doc;
+        }
+        return { ...doc, noteText: await res.text(), noteContentType: attachment.contentType };
+      } catch (error) {
+        console.warn(`📄 note text error: ${error.message}`);
+        return doc;
+      }
+    })
+  );
+
 // A procedure only counts if Epic gave it a name or a date. Otherwise it's an empty placeholder.
 const isRealProcedure = (r) =>
   codeText(r) !== 'Unknown' || Boolean(r.performedDateTime || r.performedPeriod?.start || r.performedDate);
@@ -363,7 +388,7 @@ async function fetchPatientBundle(system, accessToken, patientId) {
     patient,
     medications: entriesOf(meds),
     immunizations: entriesOf(immunizations),
-    documents: entriesOf(documents),
+    documents: await withNoteText(entriesOf(documents), accessToken),
     observations,
     procedures: entriesOf(procedures).filter(isRealProcedure),
     diagnostics: entriesOf(diagnostics),
