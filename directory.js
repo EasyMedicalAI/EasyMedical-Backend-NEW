@@ -12,6 +12,16 @@ const configured = () =>
       process.env.ANTHEM_DIRECTORY_URL
   );
 
+// Names the first URL variable that isn't a valid https address. Only the variable name is returned, never its value.
+const badUrlVariable = () =>
+  ['ANTHEM_TOKEN_URL', 'ANTHEM_DIRECTORY_URL'].find((name) => {
+    try {
+      return new URL(process.env[name]).protocol !== 'https:';
+    } catch {
+      return true;
+    }
+  });
+
 // Gets an access token with the client credentials grant. The token is reused until shortly before it expires.
 async function getToken() {
   if (cachedToken && cachedToken.expiresAt > Date.now() + 60_000) return cachedToken.value;
@@ -25,6 +35,9 @@ async function getToken() {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
     body,
+  }).catch((error) => {
+    console.warn(`Anthem sign-in could not connect: ${error.cause?.code || error.message}`);
+    throw Object.assign(new Error('Could not reach Anthem sign-in'), { status: 502 });
   });
   if (!res.ok) {
     // Logs the status only, never the response body or the credentials
@@ -47,7 +60,12 @@ async function searchDirectory({ specialty, zip }) {
   if (zip) params.set('address-postalcode', zip);
 
   const url = `${process.env.ANTHEM_DIRECTORY_URL}/PractitionerRole?${params.toString()}`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/fhir+json' } });
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/fhir+json' } }).catch(
+    (error) => {
+      console.warn(`Anthem directory could not connect: ${error.cause?.code || error.message}`);
+      throw Object.assign(new Error('Could not reach the Anthem directory'), { status: 502 });
+    }
+  );
   if (!res.ok) {
     console.warn(`Anthem directory search failed (${res.status})`);
     throw Object.assign(new Error('Anthem directory search failed'), { status: 502 });
@@ -69,6 +87,10 @@ function mountDirectoryRoutes(app) {
   app.get('/api/directory/anthem/search', async (req, res) => {
     if (!configured()) {
       return res.status(503).json({ error: 'Anthem directory is not configured on the server' });
+    }
+    const badUrl = badUrlVariable();
+    if (badUrl) {
+      return res.status(503).json({ error: `${badUrl} is not a valid https address. Check the value in Railway.` });
     }
     const { specialty, zip } = req.query;
     if (!zip || !/^\d{5}$/.test(String(zip))) {
