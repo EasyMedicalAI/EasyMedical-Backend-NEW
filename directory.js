@@ -53,13 +53,9 @@ async function getToken() {
 }
 
 // Searches the directory for practitioners with a specialty near a ZIP code
-async function searchDirectory({ specialty, zip }) {
-  const token = await getToken();
-  const params = new URLSearchParams({ _count: '50' });
-  if (specialty) params.set('specialty', specialty);
-  if (zip) params.set('address-postalcode', zip);
-
-  const url = `${process.env.ANTHEM_DIRECTORY_URL}/PractitionerRole?${params.toString()}`;
+// GET one FHIR search URL from the Anthem directory. Logs the status and the start of Anthem's reply, never the credentials.
+async function directoryGet(path, token) {
+  const url = `${process.env.ANTHEM_DIRECTORY_URL}/${path}`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/fhir+json' } }).catch(
     (error) => {
       console.warn(`Anthem directory could not connect: ${error.cause?.code || error.message}`);
@@ -67,11 +63,28 @@ async function searchDirectory({ specialty, zip }) {
     }
   );
   if (!res.ok) {
-    console.warn(`Anthem directory search failed (${res.status})`);
+    const detail = (await res.text().catch(() => '')).slice(0, 200);
+    console.warn(`Anthem directory search failed (${res.status}) ${path.split('?')[0]}: ${detail}`);
     throw Object.assign(new Error('Anthem directory search failed'), { status: 502 });
   }
-  const bundle = await res.json();
-  return (bundle.entry || [])
+  return res.json();
+}
+
+// Doctors near a ZIP code: find the locations in the ZIP, then the practitioner roles at those locations.
+// The directory doesn't accept a ZIP on PractitionerRole, so the ZIP is searched on Location first.
+// The specialty is matched against the names the directory returns, since it doesn't take a plain-text specialty.
+async function searchDirectory({ specialty, zip }) {
+  const token = await getToken();
+
+  const locations = await directoryGet(`Location?address-postalcode=${encodeURIComponent(zip)}&_count=100`, token);
+  const locationIds = (locations.entry || []).map((e) => e.resource?.id).filter(Boolean);
+  if (locationIds.length === 0) return [];
+
+  const locationParam = locationIds.map((id) => `Location/${id}`).join(',');
+  const roles = await directoryGet(`PractitionerRole?location=${encodeURIComponent(locationParam)}&_count=50`, token);
+  const wanted = specialty ? specialty.toLowerCase() : '';
+
+  return (roles.entry || [])
     .map((e) => e.resource)
     .filter(Boolean)
     .map((role) => ({
@@ -79,7 +92,8 @@ async function searchDirectory({ specialty, zip }) {
       name: role.practitioner?.display || role.organization?.display || 'Unknown',
       specialty: role.specialty?.[0]?.coding?.[0]?.display || role.specialty?.[0]?.text || '',
       phone: (role.telecom || []).find((t) => t.system === 'phone')?.value || '',
-    }));
+    }))
+    .filter((role) => !wanted || role.specialty.toLowerCase().includes(wanted));
 }
 
 function mountDirectoryRoutes(app) {
