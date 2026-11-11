@@ -189,7 +189,7 @@ async function nextStep(client, messages, finishNow) {
     max_tokens: 1200,
     system: ASK_PROMPT,
     tools: [NEXT_STEP_TOOL],
-    tool_choice: { type: 'tool', name: NEXT_STEP_TOOL.name },
+    tool_choice: { type: 'auto' },
     messages: modelMessages,
   });
   if (response.stop_reason === 'refusal') return { refused: true };
@@ -237,7 +237,7 @@ async function findingsFor(client, messages, candidates) {
       max_tokens: 2000,
       system: GROUND_PROMPT,
       tools: [FINDINGS_TOOL],
-      tool_choice: { type: 'tool', name: FINDINGS_TOOL.name },
+      tool_choice: { type: 'auto' },
       messages: [{
         role: 'user',
         content: `What the person told us:\n"""\n${transcriptOf(messages)}\n"""\n\nArticles by condition:\n\n${articleText}`,
@@ -338,7 +338,7 @@ function mountAiPinionRoutes(app, client) {
         safetyNote: SAFETY_NOTE,
       });
     } catch (error) {
-      console.error('AI-pinion turn failed:', error?.status || error?.message);
+      console.error('AI-pinion turn failed:', error?.status, error?.message);
       res.status(502).json({ error: 'AI-pinion could not respond right now. Please try again.' });
     }
   });
