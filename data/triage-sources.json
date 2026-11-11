@@ -1,0 +1,364 @@
+{
+  "version": "draft-4",
+  "entries": [
+    {
+      "id": "joint-disorders",
+      "title": "Joint Disorders",
+      "url": "https://medlineplus.gov/jointdisorders.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "What are joints ? Your joints are places where two or more bones come together. Your shoulders, elbows, hips, knees, and knuckles are all joints . Your spine has joints , too. But joints are more than bones. They include the soft tissues around them, such as cartilage, tendons and ligaments. Cartilage is the hard slippery flexible tissue that covers the ends of your bones at a joint .",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones"
+        ],
+        "parts": [
+          "Elbow or shoulder",
+          "Hip",
+          "Knee",
+          "Hand or wrist",
+          "Ankle or foot",
+          "Arm"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "back-pain",
+      "title": "Back Pain",
+      "url": "https://medlineplus.gov/backpain.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "If you've ever groaned, \"Oh, my aching back !\", you are not alone. Back pain is one of the most common medical problems, affecting 8 out of 10 people at some point during their lives. Back pain can range from a dull, constant ache to a sudden, sharp pain . Acute back pain comes on suddenly and usually lasts from a few days to a few weeks. Back pain is called chronic if it lasts for more than three months.",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones"
+        ],
+        "parts": [
+          "Back"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "neck-injuries-and-disorders",
+      "title": "Neck Injuries and Disorders",
+      "url": "https://medlineplus.gov/neckinjuriesanddisorders.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Any part of your neck - muscles, bones, joints, tendons, ligaments, or nerves - can cause neck problems. Neck pain is very common. Pain may also come from your shoulder, jaw, head, or upper arms. Muscle strain or tension often causes neck pain . The problem is usually overuse, such as from sitting at a computer for too long.",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones"
+        ],
+        "parts": [
+          "Neck"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "knee-injuries-and-disorders",
+      "title": "Knee Injuries and Disorders",
+      "url": "https://medlineplus.gov/kneeinjuriesanddisorders.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Your knee joint is made up of bone, cartilage, ligaments and fluid. Muscles and tendons help the knee joint move. When any of these structures is hurt or diseased, you have knee problems. Knee problems can cause pain and difficulty walking. Knee problems are very common, and they occur in people of all ages.",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones"
+        ],
+        "parts": [
+          "Knee"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "finger-injuries-and-disorders",
+      "title": "Finger Injuries and Disorders",
+      "url": "https://medlineplus.gov/fingerinjuriesanddisorders.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "You use your fingers and thumbs to do everything from grasping objects to playing musical instruments to typing. When there is something wrong with them, it can make life difficult. Common problems include: Injuries that result in fractures (broken bones), ruptured ligaments and dislocations Osteoarthritis - wear-and-tear arthritis. It can also cause deformity.",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones"
+        ],
+        "parts": [
+          "Hand or wrist"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "leg-injuries-and-disorders",
+      "title": "Leg Injuries and Disorders",
+      "url": "https://medlineplus.gov/leginjuriesanddisorders.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Your legs are made up of bones, blood vessels, muscles, and other connective tissue. They are important for motion and standing. Playing sports, running, falling, or having an accident can damage your legs . Common leg injuries include sprains and strains, joint dislocations, and fractures (broken bones). These injuries can affect the entire leg , or just the foot, ankle, knee, or hip.",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones"
+        ],
+        "parts": [
+          "Leg (thigh or calf)",
+          "Ankle or foot",
+          "Hip"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "nausea-and-vomiting",
+      "title": "Nausea and Vomiting",
+      "url": "https://medlineplus.gov/nauseaandvomiting.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "What are nausea and vomiting ? Nausea is when you feel sick to your stomach, as if you are going to throw up. Vomiting is when you throw up. What causes nausea and vomiting ?",
+      "appliesTo": {
+        "areas": [
+          "Stomach or digestion"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "chest-pain",
+      "title": "Chest Pain",
+      "url": "https://medlineplus.gov/chestpain.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Having a pain in your chest can be scary. It does not always mean that you are having a heart attack.",
+      "appliesTo": {
+        "areas": [
+          "Chest or breathing"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "breathing-problems",
+      "title": "Breathing Problems",
+      "url": "https://medlineplus.gov/breathingproblems.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "When you're short of breath , it's hard or uncomfortable for you to take in the oxygen your body needs. You may feel as if you're not getting enough air. Sometimes you can have mild breathing problems because of a stuffy nose or intense exercise. But shortness of breath can also be a sign of a serious disease.",
+      "appliesTo": {
+        "areas": [
+          "Chest or breathing"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "headache",
+      "title": "Headache",
+      "url": "https://medlineplus.gov/headache.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Almost everyone has had a headache. Headache is the most common form of pain. It's a major reason people miss days at work or school or visit the doctor. The most common type of headache is a tension headache . Tension headaches are due to tight muscles in your shoulders, neck, scalp and jaw. They are often related to stress, depression or anxiety.",
+      "appliesTo": {
+        "areas": [
+          "Head or face"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "rashes",
+      "title": "Rashes",
+      "url": "https://medlineplus.gov/rashes.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "A rash is an area of irritated or swollen skin. Many rashes are itchy, red, painful, and irritated. Some rashes can also lead to blisters or patches of raw skin. Rashes are a symptom of many different medical problems. Other causes include irritating substances and allergies. Certain genes can make people more likely to get rashes . Contact dermatitis is a common type of rash .",
+      "appliesTo": {
+        "areas": [
+          "Skin"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "itching",
+      "title": "Itching",
+      "url": "https://medlineplus.gov/itching.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "What is itching ? Itching is an irritating sensation that makes you want to scratch your skin. Sometimes it can feel like pain, but it is different. Often, you feel itchy in one area in your body, but sometimes you may feel itching all over. Along with the itching , you may also have a rash or hives. What causes itching ? Itching is a symptom of many health conditions.",
+      "appliesTo": {
+        "areas": [
+          "Skin"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "abdominal-pain",
+      "title": "Abdominal Pain",
+      "url": "https://medlineplus.gov/abdominalpain.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Your abdomen extends from below your chest to your groin. Some people call it the stomach , but your abdomen contains many other important organs. Pain in the abdomen can come from any one of them. The pain may start somewhere else, such as your chest. Severe pain doesn't always mean a serious problem. Nor does mild pain mean a problem is not serious.",
+      "appliesTo": {
+        "areas": [
+          "Stomach or digestion"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "edema",
+      "title": "Edema",
+      "url": "https://medlineplus.gov/edema.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Edema means swelling caused by fluid in your body's tissues. It usually occurs in the feet, ankles and legs, but it can involve your entire body.",
+      "appliesTo": {
+        "areas": [
+          "Joints, muscles, or bones",
+          "Something else"
+        ],
+        "parts": [
+          "Leg (thigh or calf)",
+          "Ankle or foot"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "fever",
+      "title": "Fever",
+      "url": "https://medlineplus.gov/fever.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "A fever is a body temperature that is higher than normal. A normal temperature can vary from person to person, but it is usually around 98.6 °F (37 °C). A fever is not a disease. It is usually a sign that your body is trying to fight an illness or infection. Infections cause most fevers . You get a fever because your body is trying to kill the virus or bacteria that caused the infection.",
+      "appliesTo": {
+        "areas": [
+          "Head or face",
+          "Chest or breathing",
+          "Stomach or digestion",
+          "Joints, muscles, or bones",
+          "Skin",
+          "Something else"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "fatigue",
+      "title": "Fatigue",
+      "url": "https://medlineplus.gov/fatigue.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "What is fatigue ? Fatigue is a feeling of weariness, tiredness, or lack of energy. It can interfere with your usual daily activities. Fatigue can be a normal response to physical activity, emotional stress, boredom, or lack of sleep. But sometimes it can be a sign of a mental or physical condition. If you have been feeling tired for weeks, contact your health care provider.",
+      "appliesTo": {
+        "areas": [
+          "Something else"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "dizziness-and-vertigo",
+      "title": "Dizziness and Vertigo",
+      "url": "https://medlineplus.gov/dizzinessandvertigo.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "What is dizziness and vertigo ? Dizziness and vertigo are not the same thing, but they are often mixed up. Dizziness can make you feel lightheaded , woozy or unsteady on your feet. Vertigo is the feeling that you or the room is spinning even when nothing is moving. These feelings may get worse when you walk, stand up, or move your head, and they can make you lose your balance.",
+      "appliesTo": {
+        "areas": [
+          "Head or face"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "cough",
+      "title": "Cough",
+      "url": "https://medlineplus.gov/cough.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Coughing is a reflex that keeps your throat and airways clear. Although it can be annoying, coughing helps your body heal or protect itself. Coughs can be either acute or chronic. Acute coughs begin suddenly and usually last no more than 2 to 3 weeks. Acute coughs are the kind you most often get with a cold, flu, or acute bronchitis. Chronic coughs last longer than 2 to 3 weeks.",
+      "appliesTo": {
+        "areas": [
+          "Chest or breathing"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "sore-throat",
+      "title": "Sore Throat",
+      "url": "https://medlineplus.gov/sorethroat.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Your throat is a tube that carries food to your esophagus and air to your windpipe and larynx (also called the voice box). The technical name for the throat is pharynx. You can have a sore throat for many reasons. Often, colds and flu cause sore throats . Other causes can include: Allergies Mononucleosis Smoking Strep throat Tonsillitis Treatment depends on the cause.",
+      "appliesTo": {
+        "areas": [
+          "Head or face",
+          "Something else"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "diarrhea",
+      "title": "Diarrhea",
+      "url": "https://medlineplus.gov/diarrhea.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "What is diarrhea ? Diarrhea is loose, watery stools (bowel movements). You have diarrhea if you have loose stools three or more times in one day. Acute diarrhea is diarrhea that lasts a short time. It is a common problem. It usually lasts about one or two days, but it may last longer. Then it goes away on its own. Diarrhea lasting more than a few days may be a sign of a more serious problem.",
+      "appliesTo": {
+        "areas": [
+          "Stomach or digestion"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "constipation",
+      "title": "Constipation",
+      "url": "https://medlineplus.gov/constipation.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Constipation means having fewer than three bowel movements a week. The stool (poop) can be hard and dry. Sometimes it is painful to pass. At one time or another, almost everyone gets constipated. In most cases, it lasts a short time and is not serious. There are many things you can do to prevent constipation .",
+      "appliesTo": {
+        "areas": [
+          "Stomach or digestion"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "heartburn",
+      "title": "Heartburn",
+      "url": "https://medlineplus.gov/heartburn.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Heartburn is a painful burning feeling in your chest or throat. It happens when stomach acid backs up into your esophagus, the tube that carries food from your mouth to your stomach. If you have heartburn more than twice a week, you may have GERD. But you can have GERD without having heartburn . Pregnancy, certain foods, alcohol, and some medications can bring on heartburn .",
+      "appliesTo": {
+        "areas": [
+          "Stomach or digestion",
+          "Chest or breathing"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    },
+    {
+      "id": "urine-and-urination",
+      "title": "Urine and Urination",
+      "url": "https://medlineplus.gov/urineandurination.html",
+      "source": "MedlinePlus, U.S. National Library of Medicine",
+      "excerpt": "Your kidneys make urine by filtering wastes and extra water from your blood. The waste is called urea. Your blood carries it to the kidneys. From the kidneys, urine travels down two thin tubes called ureters to the bladder. The bladder stores urine until you are ready to urinate. It swells into a round shape when it is full and gets smaller when empty.",
+      "appliesTo": {
+        "areas": [
+          "Something else"
+        ]
+      },
+      "lastFetched": "2026-11-11",
+      "reviewStatus": "draft: needs clinician review before use"
+    }
+  ]
+}
