@@ -29,6 +29,7 @@ While you are still asking questions:
 - Ask ONE short, plain-language question at a time. Each question should help narrow the possibilities.
 - Cover what is needed: where it is and what it feels like, when it started and how it has changed, what makes it better or worse, other symptoms (fever, rash, tiredness, weight change, swelling, changes to skin, nails or eyes), family history of similar problems, and what doctors or urgent care have already said, tried or ruled out.
 - Do not name a condition while you are still asking questions.
+- Prefer multiple choice. When a few answers cover it, give 2 to 5 short options in "options", such as "Yes", "No", "Not sure". Use an empty options list only when the answer needs the person's own words.
 - Do NOT recommend a treatment, a medication, a dose, or starting or stopping anything.
 
 When you have enough to suggest three likely possibilities, or the person has answered enough, choose action "finish" and list exactly three possible medical conditions, most likely first. Explain each one in terms of what the person said. Do not claim certainty. If the information is thin, still give three, and say in "why" what is missing.
@@ -43,6 +44,11 @@ const NEXT_STEP_TOOL = {
     properties: {
       action: { type: 'string', enum: ['ask', 'finish'] },
       question: { type: 'string', description: 'When action is ask: one plain-language question. Otherwise empty.' },
+      options: {
+        type: 'array',
+        items: { type: 'string' },
+        description: 'When action is ask and a few answers cover it: 2 to 5 short answers the person can tap. Empty for an open question.',
+      },
       candidates: {
         type: 'array',
         description: 'When action is finish: exactly three possible conditions, most likely first. Otherwise empty.',
@@ -62,7 +68,7 @@ const NEXT_STEP_TOOL = {
         },
       },
     },
-    required: ['action', 'question', 'candidates'],
+    required: ['action', 'question', 'options', 'candidates'],
     additionalProperties: false,
   },
 };
@@ -307,7 +313,8 @@ function mountAiPinionRoutes(app, client) {
       if (input.action === 'ask' && !finishNow) {
         const question = cleanText(input.question, 500);
         if (!question) return res.status(502).json({ error: 'AI-pinion could not respond. Please try again.' });
-        return res.json({ type: 'question', text: question });
+        const options = (input.options || []).map((o) => cleanText(o, 60)).filter(Boolean).slice(0, 5);
+        return res.json({ type: 'question', text: question, options });
       }
 
       const candidates = uniqueCandidates(input.candidates);
