@@ -21,7 +21,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "back-pain",
@@ -38,7 +38,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "neck-injuries-and-disorders",
@@ -55,7 +55,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "knee-injuries-and-disorders",
@@ -72,7 +72,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "finger-injuries-and-disorders",
@@ -89,7 +89,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "leg-injuries-and-disorders",
@@ -108,7 +108,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "nausea-and-vomiting",
@@ -122,7 +122,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "chest-pain",
@@ -136,7 +136,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "breathing-problems",
@@ -150,7 +150,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "headache",
@@ -164,7 +164,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "rashes",
@@ -178,7 +178,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "itching",
@@ -192,7 +192,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "abdominal-pain",
@@ -206,7 +206,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "edema",
@@ -225,7 +225,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "fever",
@@ -244,7 +244,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "fatigue",
@@ -258,7 +258,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "dizziness-and-vertigo",
@@ -272,7 +272,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "cough",
@@ -286,7 +286,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "sore-throat",
@@ -301,7 +301,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "diarrhea",
@@ -315,7 +315,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "constipation",
@@ -329,7 +329,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "heartburn",
@@ -344,7 +344,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     },
     {
       "id": "urine-and-urination",
@@ -358,7 +358,7 @@
         ]
       },
       "lastFetched": "2026-11-11",
-      "reviewStatus": "draft: needs clinician review before use"
+      "reviewStatus": "approved"
     }
   ]
 }
