@@ -17,6 +17,7 @@ const { mountInsuranceRoutes } = require('./insurance');
 const { mountAssistantRoutes } = require('./assistant');
 const { mountDirectoryRoutes } = require('./directory');
 const { mountCostPlusRoutes } = require('./costplus');
+const { mountTriageRoutes } = require('./triage');
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -28,6 +29,7 @@ mountMedicationRoutes(app, client);
 mountInsuranceRoutes(app, client);
 mountDirectoryRoutes(app);
 mountCostPlusRoutes(app);
+mountTriageRoutes(app, client);
 
 // Turns typed or dictated health notes into entries the person confirms before saving
 mountAssistantRoutes(app, client);
