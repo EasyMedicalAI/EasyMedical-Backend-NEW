@@ -79,7 +79,8 @@ async function searchTerm(term, field, extra) {
     db: 'pubmed',
     term: `"${term.replace(/["\[\]]/g, '')}"[${field}] AND hasabstract${extra}`,
     retmax: String(SEARCH_LIMIT),
-    sort: 'pub date',
+    // Best match first. Sorting by date alone picked the newest articles, which are often off-topic.
+    sort: 'relevance',
     datetype: 'pdat',
     mindate: String(now - YEARS_BACK),
     maxdate: String(now),

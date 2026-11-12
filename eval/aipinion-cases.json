@@ -1,0 +1,53 @@
+{
+  "_about": "Made-up symptom descriptions for checking AI-pinion. Each case lists conditions that should appear in the top three, and a keyword that a relevant article title should contain. Add real cases only with the person's agreement, and never commit personal details.",
+  "cases": [
+    {
+      "id": "gout-big-toe",
+      "story": "My big toe suddenly became very painful, red and hot overnight. It woke me up and it was too sore to put a sock on.",
+      "expect_any_of": ["Gout"],
+      "keyword": "gout"
+    },
+    {
+      "id": "psoriatic-arthritis",
+      "story": "My fingers and toes swell and hurt, mostly on one side. I also have scaly red patches on my elbows and scalp, and some of my fingernails have small pits in them.",
+      "expect_any_of": ["Psoriatic arthritis"],
+      "keyword": "psoriatic arthritis"
+    },
+    {
+      "id": "rheumatoid-arthritis",
+      "story": "My hands and wrists are stiff for more than an hour every morning. The small joints of my fingers swell on both sides, and I feel tired most days.",
+      "expect_any_of": ["Rheumatoid arthritis"],
+      "keyword": "rheumatoid arthritis"
+    },
+    {
+      "id": "carpal-tunnel",
+      "story": "My thumb, index and middle fingers go numb and tingle. It is worst at night and when I type for a long time, and I sometimes drop things.",
+      "expect_any_of": ["Carpal tunnel syndrome"],
+      "keyword": "carpal tunnel"
+    },
+    {
+      "id": "hypothyroidism",
+      "story": "I am always tired and feel cold when others do not. I have gained weight without changing how I eat, my skin is dry, and I am constipated most of the time.",
+      "expect_any_of": ["Hypothyroidism"],
+      "keyword": "hypothyroidism"
+    },
+    {
+      "id": "iron-deficiency",
+      "story": "I am very tired and get short of breath climbing stairs. I look pale, and my periods have been very heavy for the last few months.",
+      "expect_any_of": ["Iron deficiency anemia", "Anemia"],
+      "keyword": "anemia"
+    },
+    {
+      "id": "migraine",
+      "story": "I get a throbbing headache on one side of my head, with feeling sick to my stomach. Bright lights make it worse, and it lasts several hours.",
+      "expect_any_of": ["Migraine"],
+      "keyword": "migraine"
+    },
+    {
+      "id": "systemic-lupus",
+      "story": "My joints ache in several places, and a red rash across my cheeks gets worse in the sun. I have had sores in my mouth and I am tired all the time.",
+      "expect_any_of": ["Systemic lupus erythematosus", "Lupus"],
+      "keyword": "lupus"
+    }
+  ]
+}

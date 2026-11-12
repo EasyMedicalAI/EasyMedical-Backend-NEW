@@ -2,15 +2,19 @@
 // It is a computer program, not a doctor, and every result says so. Emergency warning signs are checked by
 // fixed rules first, and the model never sees them.
 //
-// Each candidate is searched in recent PubMed articles. Statements about the articles must cite an article
-// we sent, and statements without a valid citation are dropped.
+// The chat has two steps, so the app can show the three possibilities while the articles are still loading:
+//   POST /api/ai-pinion/turn      asks the next question, or names three possibilities
+//   POST /api/ai-pinion/articles  searches recent PubMed articles for those names and summarises them
+//
+// Each summary sentence must cite an article we sent. Sentences without a valid citation are dropped.
 //
 // Off unless AI_PINION_ENABLED=true. Personal use only.
 
 const { emergencyReason } = require('./triage');
 const { articlesFor, sourceOf } = require('./pubmed');
 
-const MODEL = 'claude-opus-5-5';
+// One model for every step. Haiku 5.5 is the lowest-cost option. Set AI_PINION_MODEL to change it.
+const MODEL = process.env.AI_PINION_MODEL || 'claude-haiku-5-5';
 // After this many questions from the person, the chat must finish with three candidates
 const MAX_USER_TURNS = 8;
 const MAX_MESSAGES = 40;
@@ -32,7 +36,7 @@ While you are still asking questions:
 - Prefer multiple choice. When a few answers cover it, give 2 to 5 short options in "options", such as "Yes", "No", "Not sure". Use an empty options list only when the answer needs the person's own words.
 - Do NOT recommend a treatment, a medication, a dose, or starting or stopping anything.
 
-When you have enough to suggest three likely possibilities, or the person has answered enough, choose action "finish" and list exactly three possible medical conditions, most likely first. Explain each one in terms of what the person said. Do not claim certainty. If the information is thin, still give three, and say in "why" what is missing.
+When you have enough to suggest three likely possibilities, or the person has answered enough, choose action "finish" and list exactly three possible medical conditions, most likely first. In "why", say only what the person told you that points this way, and what is still unclear. Leave medical facts to the research articles. Do not claim certainty. If the information is thin, still give three, and say in "why" what is missing.
 Respond only by calling the next_step tool.`;
 
 const NEXT_STEP_TOOL = {
@@ -56,7 +60,10 @@ const NEXT_STEP_TOOL = {
           type: 'object',
           properties: {
             name: { type: 'string', description: 'The condition name as medical literature uses it, such as "Psoriatic arthritis".' },
-            why: { type: 'string', description: 'Why this fits what the person said, in plain language. Refer to their words.' },
+            why: {
+              type: 'string',
+              description: 'What the person told us that points to this, in plain language, and what is still unclear. Refer to their words. No medical facts here.',
+            },
             ask_clinician: {
               type: 'array',
               items: { type: 'string' },
@@ -179,19 +186,34 @@ function uniqueCandidates(list) {
   return out;
 }
 
+// Up to three distinct condition names sent by the app for the article step
+function uniqueNames(list) {
+  const seen = new Set();
+  const out = [];
+  for (const value of Array.isArray(list) ? list : []) {
+    const name = cleanText(value, 100);
+    const key = name.toLowerCase();
+    if (!name || seen.has(key)) continue;
+    seen.add(key);
+    out.push(name);
+    if (out.length === 3) break;
+  }
+  return out;
+}
+
 function transcriptOf(messages) {
   return messages.map((m) => `${m.role === 'user' ? 'Person' : 'AI-pinion'}: ${m.content}`).join('\n');
 }
 
-// Asks the next question, or finishes with three candidate conditions.
-async function nextStep(client, messages, finishNow) {
+// One call to the model, which either asks a question or finishes
+async function askStep(client, model, messages, finishNow) {
   const modelMessages = messages.map((m) => ({ ...m }));
   if (finishNow) {
     const last = modelMessages[modelMessages.length - 1];
     last.content += '\n\n[Enough questions have been asked. Choose action "finish" now.]';
   }
   const response = await client.messages.create({
-    model: MODEL,
+    model,
     max_tokens: 1200,
     system: ASK_PROMPT,
     tools: [NEXT_STEP_TOOL],
@@ -277,33 +299,43 @@ async function findingsFor(client, messages, candidates) {
   return { summary, paragraphsFor, idsByCandidate, articleById };
 }
 
+// Checks shared by both routes: the flag, the message shape, the emergency rules and the hourly cap.
+// Returns the cleaned messages, or null after a response has been sent.
+function checkRequest(req, res) {
+  if (process.env.AI_PINION_ENABLED !== 'true') {
+    res.status(503).json({ error: 'AI-pinion is not available yet.' });
+    return null;
+  }
+  const raw = Array.isArray(req.body?.messages) ? req.body.messages.slice(-MAX_MESSAGES) : [];
+  const messages = normaliseMessages(raw);
+  if (messages.length === 0 || messages[messages.length - 1].role !== 'user') {
+    res.status(400).json({ error: 'Tell AI-pinion what is going on first.' });
+    return null;
+  }
+  // Emergency rules run first, always, and never call the model
+  const userText = messages.filter((m) => m.role === 'user').map((m) => m.content).join(' ');
+  if (emergencyReason(userText)) {
+    res.json({ type: 'emergency', text: EMERGENCY_TEXT, safetyNote: SAFETY_NOTE });
+    return null;
+  }
+  if (!withinHourlyCap()) {
+    res.status(429).json({ error: 'AI-pinion is busy for now. Please try again later.' });
+    return null;
+  }
+  return messages;
+}
+
 function mountAiPinionRoutes(app, client) {
   // POST /api/ai-pinion/turn { messages: [{ role: 'user' | 'assistant', content: string }] }
+  // Replies with a question, an emergency stop, or three candidates (no articles yet).
   app.post('/api/ai-pinion/turn', async (req, res) => {
-    if (process.env.AI_PINION_ENABLED !== 'true') {
-      return res.status(503).json({ error: 'AI-pinion is not available yet.' });
-    }
-    const raw = Array.isArray(req.body?.messages) ? req.body.messages.slice(-MAX_MESSAGES) : [];
-    const messages = normaliseMessages(raw);
-    if (messages.length === 0 || messages[messages.length - 1].role !== 'user') {
-      return res.status(400).json({ error: 'Tell AI-pinion what is going on first.' });
-    }
-
-    // Emergency rules run first, always, and never call the model
-    const userText = messages.filter((m) => m.role === 'user').map((m) => m.content).join(' ');
-    if (emergencyReason(userText)) {
-      return res.json({ type: 'emergency', text: EMERGENCY_TEXT, safetyNote: SAFETY_NOTE });
-    }
-
-    if (!withinHourlyCap()) {
-      return res.status(429).json({ error: 'AI-pinion is busy for now. Please try again later.' });
-    }
-
+    const messages = checkRequest(req, res);
+    if (!messages) return;
     try {
       const userTurns = messages.filter((m) => m.role === 'user').length;
       const finishNow = userTurns >= MAX_USER_TURNS;
 
-      const step = await nextStep(client, messages, finishNow);
+      const step = await askStep(client, MODEL, messages, finishNow);
       if (step.refused) {
         return res.status(422).json({ error: 'AI-pinion cannot help with this here. Please talk with a clinician.' });
       }
@@ -321,18 +353,35 @@ function mountAiPinionRoutes(app, client) {
       if (candidates.length === 0) {
         return res.status(502).json({ error: 'AI-pinion could not work out possibilities yet. Please add a little more detail.' });
       }
+      res.json({
+        type: 'candidates',
+        candidates: candidates.map((c, i) => ({ rank: i + 1, name: c.name, why: c.why, askClinician: c.askClinician })),
+      });
+    } catch (error) {
+      console.error('AI-pinion turn failed:', error?.status, error?.message);
+      res.status(502).json({ error: 'AI-pinion could not respond right now. Please try again.' });
+    }
+  });
 
-      const { summary, paragraphsFor } = await findingsFor(client, messages, candidates);
+  // POST /api/ai-pinion/articles { messages, names: [condition name, up to three] }
+  // Replies with a summary of recent articles for each name, with citations.
+  app.post('/api/ai-pinion/articles', async (req, res) => {
+    const messages = checkRequest(req, res);
+    if (!messages) return;
+    const names = uniqueNames(req.body?.names);
+    if (names.length === 0) {
+      return res.status(400).json({ error: 'Choose possibilities first.' });
+    }
+    try {
+      const { summary, paragraphsFor } = await findingsFor(client, messages, names.map((name) => ({ name })));
       const sources = new Map();
-      const results = candidates.map((candidate, i) => {
+      const results = names.map((name, i) => {
         const paragraphs = paragraphsFor[i];
         paragraphs.forEach((p) => p.sources.forEach((s) => sources.set(s.pmid, { id: s.id, title: s.title, journal: s.journal, year: s.year, url: s.url, pmid: s.pmid })));
         return {
           rank: i + 1,
-          name: candidate.name,
-          why: candidate.why,
+          name,
           articlesSay: paragraphs,
-          askClinician: candidate.askClinician,
           limitedEvidence: paragraphs.length === 0,
         };
       });
@@ -345,10 +394,10 @@ function mountAiPinionRoutes(app, client) {
         safetyNote: SAFETY_NOTE,
       });
     } catch (error) {
-      console.error('AI-pinion turn failed:', error?.status, error?.message);
-      res.status(502).json({ error: 'AI-pinion could not respond right now. Please try again.' });
+      console.error('AI-pinion articles failed:', error?.status, error?.message);
+      res.status(502).json({ error: 'AI-pinion could not look up articles right now. Please try again.' });
     }
   });
 }
 
-module.exports = { mountAiPinionRoutes, normaliseMessages, uniqueCandidates };
+module.exports = { mountAiPinionRoutes, normaliseMessages, uniqueCandidates, uniqueNames };
