@@ -1098,7 +1098,9 @@
       "story": "My throat is very sore, with white patches on my tonsils. I have a fever and tender lumps in my neck.",
       "accept": [
         "Streptococcal pharyngitis",
-        "Strep throat"
+        "Strep throat",
+        "Streptococcal tonsillitis",
+        "Strep tonsillitis"
       ],
       "keyword": "pharyngitis"
     },
@@ -1107,7 +1109,8 @@
       "story": "A throbbing pain in a lower back tooth keeps me awake. My cheek is puffy and warm, and hot drinks make the tooth ache.",
       "accept": [
         "Dental abscess",
-        "Periapical abscess"
+        "Periapical abscess",
+        "Tooth abscess"
       ],
       "keyword": "abscess"
     },
