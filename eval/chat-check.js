@@ -9,7 +9,10 @@ process.env.AI_PINION_HOURLY_LIMIT = process.env.AI_PINION_HOURLY_LIMIT || '1000
 const { mountAiPinionRoutes } = require('../aipinion');
 const { emergencyReason } = require('../triage');
 // ONLY=id1,id2 runs just those cases (useful for a first test)
-const cases = require('./aipinion-cases.json').cases.filter((c) => !process.env.ONLY || process.env.ONLY.split(',').includes(c.id));
+// CASES_FILE picks another case file (for example aipinion-lab-cases.json). WITH_LABS=0 leaves out lab results and imaging.
+const casesPath = require('path').resolve(__dirname, process.env.CASES_FILE || 'aipinion-cases.json');
+const withLabs = process.env.WITH_LABS !== '0';
+const cases = require(casesPath).cases.filter((c) => !process.env.ONLY || process.env.ONLY.split(',').includes(c.id));
 
 process.env.AI_PINION_ENABLED = 'true';
 const MAX_TURNS = 10;
@@ -32,7 +35,7 @@ const MAX_TURNS = 10;
     let turns = 0;
     while (turns < MAX_TURNS && !names) {
       turns += 1;
-      const turn = await post('/api/ai-pinion/turn', { messages });
+      const turn = await post('/api/ai-pinion/turn', { messages, results: withLabs ? c.results || [] : [], imaging: withLabs ? c.imaging || '' : '' });
       if (turn.type === 'question') {
         messages.push({ role: 'assistant', content: turn.text });
         // Answers 'Not sure' when offered. Otherwise the first option that is not a warning sign (those stop the chat).

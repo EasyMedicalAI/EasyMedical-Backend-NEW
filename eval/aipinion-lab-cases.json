@@ -1,0 +1,331 @@
+{
+  "_about": "AI-pinion cases where lab results or imaging reports matter. Run with and without the results (WITH_LABS=0 leaves them out) to compare. Made-up values. Results are typed as the app sends them.",
+  "cases": [
+    {
+      "id": "lab-hypothyroid",
+      "story": "I am tired all the time, I feel cold when others do not, I am constipated, and my weight has gone up.",
+      "results": [
+        {
+          "test": "TSH",
+          "value": "12.4",
+          "unit": "mIU/L",
+          "range": "0.4-4.0"
+        },
+        {
+          "test": "Free T4",
+          "value": "0.6",
+          "unit": "ng/dL",
+          "range": "0.8-1.8"
+        }
+      ],
+      "accept": [
+        "Hypothyroidism",
+        "Underactive thyroid"
+      ],
+      "keyword": "hypothyroidism"
+    },
+    {
+      "id": "lab-hyperthyroid",
+      "story": "My heart races, I have lost weight without trying, I feel hot and I sweat a lot.",
+      "results": [
+        {
+          "test": "TSH",
+          "value": "0.01",
+          "unit": "mIU/L",
+          "range": "0.4-4.0"
+        },
+        {
+          "test": "Free T4",
+          "value": "3.1",
+          "unit": "ng/dL",
+          "range": "0.8-1.8"
+        }
+      ],
+      "accept": [
+        "Hyperthyroidism",
+        "Graves disease"
+      ],
+      "keyword": "hyperthyroidism"
+    },
+    {
+      "id": "lab-prediabetes",
+      "story": "I am sometimes thirsty, I feel tired after meals, and diabetes runs in my family.",
+      "results": [
+        {
+          "test": "HbA1c",
+          "value": "6.1",
+          "unit": "%",
+          "range": "below 5.7"
+        }
+      ],
+      "accept": [
+        "Prediabetes",
+        "Impaired glucose tolerance"
+      ],
+      "keyword": "prediabetes"
+    },
+    {
+      "id": "lab-type2-diabetes",
+      "story": "I am very thirsty, I pass urine often, and I have lost weight without trying.",
+      "results": [
+        {
+          "test": "HbA1c",
+          "value": "9.2",
+          "unit": "%",
+          "range": "below 5.7"
+        }
+      ],
+      "accept": [
+        "Type 2 diabetes",
+        "Type 2 diabetes mellitus",
+        "Diabetes mellitus"
+      ],
+      "keyword": "diabetes"
+    },
+    {
+      "id": "lab-iron-deficiency",
+      "story": "I am tired and pale, my hair is falling out, and I feel dizzy when I stand up.",
+      "results": [
+        {
+          "test": "Hemoglobin",
+          "value": "10.1",
+          "unit": "g/dL",
+          "range": "12-15.5"
+        },
+        {
+          "test": "Ferritin",
+          "value": "6",
+          "unit": "ng/mL",
+          "range": "15-150"
+        },
+        {
+          "test": "MCV",
+          "value": "74",
+          "unit": "fL",
+          "range": "80-100"
+        }
+      ],
+      "accept": [
+        "Iron deficiency anemia",
+        "Iron deficiency"
+      ],
+      "keyword": "anemia"
+    },
+    {
+      "id": "lab-b12",
+      "story": "My feet are numb and I feel unsteady when I walk. I have been forgetful and tired.",
+      "results": [
+        {
+          "test": "Vitamin B12",
+          "value": "165",
+          "unit": "pg/mL",
+          "range": "200-900"
+        },
+        {
+          "test": "MCV",
+          "value": "102",
+          "unit": "fL",
+          "range": "80-100"
+        }
+      ],
+      "accept": [
+        "Vitamin B12 deficiency",
+        "B12 deficiency"
+      ],
+      "keyword": "b12"
+    },
+    {
+      "id": "lab-gout",
+      "story": "My big toe became hot, red and very swollen overnight, and it hurts to touch.",
+      "results": [
+        {
+          "test": "Uric acid",
+          "value": "9.1",
+          "unit": "mg/dL",
+          "range": "3.4-7.0"
+        }
+      ],
+      "accept": [
+        "Gout",
+        "Acute gout"
+      ],
+      "keyword": "gout"
+    },
+    {
+      "id": "lab-rheumatoid",
+      "story": "My hands are swollen on both sides and stiff for more than an hour every morning.",
+      "results": [
+        {
+          "test": "Anti-CCP",
+          "value": "180",
+          "unit": "U/mL",
+          "range": "below 20"
+        },
+        {
+          "test": "Rheumatoid factor",
+          "value": "positive",
+          "unit": "",
+          "range": ""
+        },
+        {
+          "test": "CRP",
+          "value": "38",
+          "unit": "mg/L",
+          "range": "below 5"
+        }
+      ],
+      "accept": [
+        "Rheumatoid arthritis"
+      ],
+      "keyword": "rheumatoid"
+    },
+    {
+      "id": "lab-lupus",
+      "story": "My joints ache, I have a rash across my cheeks, I get mouth sores, and I am tired all the time.",
+      "results": [
+        {
+          "test": "ANA",
+          "value": "positive",
+          "unit": "titre 1:640",
+          "range": ""
+        },
+        {
+          "test": "Anti-dsDNA",
+          "value": "positive",
+          "unit": "",
+          "range": ""
+        },
+        {
+          "test": "C3",
+          "value": "58",
+          "unit": "mg/dL",
+          "range": "90-180"
+        }
+      ],
+      "accept": [
+        "Systemic lupus erythematosus",
+        "Lupus"
+      ],
+      "keyword": "lupus"
+    },
+    {
+      "id": "lab-ckd",
+      "story": "I am tired, my ankles are swollen, my skin itches, and I get up several times a night to pass urine.",
+      "results": [
+        {
+          "test": "eGFR",
+          "value": "38",
+          "unit": "mL/min/1.73m2",
+          "range": "above 60"
+        },
+        {
+          "test": "Urine albumin-creatinine ratio",
+          "value": "320",
+          "unit": "mg/g",
+          "range": "below 30"
+        }
+      ],
+      "accept": [
+        "Chronic kidney disease"
+      ],
+      "keyword": "chronic kidney disease"
+    },
+    {
+      "id": "lab-hyperlipidemia",
+      "story": "I feel well and have no symptoms. My father had heart disease at fifty.",
+      "results": [
+        {
+          "test": "LDL cholesterol",
+          "value": "5.2",
+          "unit": "mmol/L",
+          "range": "below 3.0"
+        },
+        {
+          "test": "Total cholesterol",
+          "value": "7.4",
+          "unit": "mmol/L",
+          "range": "below 5.0"
+        }
+      ],
+      "accept": [
+        "Hyperlipidemia",
+        "High cholesterol",
+        "Dyslipidemia",
+        "Hypercholesterolemia",
+        "Hyperlipidaemia",
+        "Familial hypercholesterolemia",
+        "Primary hypercholesterolemia",
+        "Familial combined hyperlipidemia"
+      ],
+      "keyword": "hyperlipidemia"
+    },
+    {
+      "id": "lab-vitamin-d",
+      "story": "My bones ache, my muscles feel weak, and my mood is low in the winter.",
+      "results": [
+        {
+          "test": "25-hydroxyvitamin D",
+          "value": "14",
+          "unit": "ng/mL",
+          "range": "30-100"
+        }
+      ],
+      "accept": [
+        "Vitamin D deficiency"
+      ],
+      "keyword": "vitamin d"
+    },
+    {
+      "id": "img-knee-oa",
+      "story": "My knee aches when I climb stairs, and it is stiff for about twenty minutes after I sit down.",
+      "imaging": "X-ray right knee: medial joint space narrowing and osteophytes at the medial tibial plateau. No fracture.",
+      "accept": [
+        "Knee osteoarthritis",
+        "Osteoarthritis"
+      ],
+      "keyword": "osteoarthritis"
+    },
+    {
+      "id": "img-kidney-stone",
+      "story": "I have sudden pain in my side that moves toward my groin, I feel sick, and my urine looks pink.",
+      "imaging": "CT abdomen and pelvis: 4 mm calculus in the right distal ureter with mild hydronephrosis.",
+      "accept": [
+        "Kidney stones",
+        "Kidney stone",
+        "Ureteral stone"
+      ],
+      "keyword": "kidney stone"
+    },
+    {
+      "id": "img-pneumonia",
+      "story": "I have a cough with green phlegm, a fever for three days, and I feel weak.",
+      "imaging": "Chest X-ray: right lower lobe consolidation.",
+      "accept": [
+        "Pneumonia",
+        "Community-acquired pneumonia"
+      ],
+      "keyword": "pneumonia"
+    },
+    {
+      "id": "img-gallstones",
+      "story": "I get pain under my right ribs after fatty meals, and I sometimes feel sick afterwards.",
+      "imaging": "Ultrasound abdomen: multiple gallstones. Gallbladder wall not thickened. No dilated bile ducts.",
+      "accept": [
+        "Gallstones",
+        "Cholelithiasis"
+      ],
+      "keyword": "gallstone"
+    },
+    {
+      "id": "img-sinusitis",
+      "story": "I have facial pressure and thick nasal discharge that has lasted ten days.",
+      "imaging": "CT sinuses: opacification of both maxillary sinuses.",
+      "accept": [
+        "Sinusitis",
+        "Chronic rhinosinusitis",
+        "Acute bacterial sinusitis"
+      ],
+      "keyword": "sinusitis"
+    }
+  ]
+}

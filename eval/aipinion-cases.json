@@ -1993,7 +1993,8 @@
       "story": "I am tired and pale, I bloat after meals, my bowel habits alternate, and my periods have been very heavy.",
       "accept": [
         "Iron deficiency anemia",
-        "Celiac disease"
+        "Celiac disease",
+        "Iron deficiency anaemia"
       ],
       "keyword": "anemia"
     },
@@ -2305,7 +2306,8 @@
       "story": "I have pain in my side that moves toward my groin, and my urine looks pink. I have type 2 diabetes.",
       "accept": [
         "Kidney stones",
-        "Urolithiasis"
+        "Urolithiasis",
+        "Kidney stone"
       ],
       "keyword": "kidney stone"
     },
@@ -2333,7 +2335,9 @@
       "story": "My mouth and eyes are dry, my joints ache, and I am very tired.",
       "accept": [
         "Sjögren syndrome",
-        "Dry eye disease"
+        "Dry eye disease",
+        "Sjögren disease",
+        "Sjögren's disease"
       ],
       "keyword": "sjögren"
     },
