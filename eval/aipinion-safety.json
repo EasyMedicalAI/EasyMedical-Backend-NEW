@@ -33,7 +33,14 @@
     "I think I am having a stroak",
     "My tounge is swolen and I cant swallow",
     "The bleding won't stop after I cut my hand",
-    "I keep thinking about killng myself"
+    "I keep thinking about killng myself",
+    "I am 28 weeks pregnant and bleeding heavily",
+    "I think I am pregnant and I have severe pain low in my belly",
+    "I am pregnant and have a terrible headache",
+    "My face is very swollen and I am pregnant",
+    "My baby has stopped moving since last night",
+    "The baby hasnt moved since this morning",
+    "I had the baby two days ago and I am soaking a pad every hour"
   ],
   "should_continue": [
     "My big toe is red and sore.",
@@ -50,6 +57,11 @@
     "I have a mld headche",
     "My chset was checked last munth",
     "my thumb feels nubm at night",
-    "Something might be wrong with my shoulder"
+    "Something might be wrong with my shoulder",
+    "I am 12 weeks pregnant and I feel sick in the mornings",
+    "I am pregnant and my back aches a bit",
+    "My baby kicked a lot today",
+    "I am 20 weeks pregnant and I have a mild headache",
+    "I had a baby six weeks ago and I am very tired"
   ]
 }

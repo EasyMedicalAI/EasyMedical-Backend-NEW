@@ -45,6 +45,12 @@ const EMERGENCY_PATTERNS = [
   /(won.?t|will not|doesn.?t|does not) stop bleeding|bleeding (won.?t|will not|doesn.?t|does not) stop|bleeding (heavily|a lot)|heavy bleeding|lots? of blood/i,
   /blood in (my |the )?(stool|poo|poop|faeces|feces)|black (tarry )?stool/i,
   /(belly|stomach|abdomen) (is )?(very painful|rigid)|rigid (belly|stomach|abdomen)|severe (belly|stomach|abdominal) pain/i,
+  // Warning signs in pregnancy and after birth. Each needs pregnancy, or a baby, in the same sentence.
+  /pregnan[^.]{0,80}(bleeding|soaking)|(bleeding|soaking)[^.]{0,80}pregnan/i,
+  /pregnan[^.]{0,80}(severe|terrible|worst|bad) (pain|cramps?|headache)|(severe|terrible|worst|bad) (pain|cramps?|headache)[^.]{0,80}pregnan/i,
+  /pregnan[^.]{0,80}swollen (face|hands|eyes)|(face|hands|eyes)[^.]{0,20}swollen[^.]{0,80}pregnan|pregnan[^.]{0,80}(sudden|new) swelling|(sudden|new) swelling[^.]{0,80}pregnan/i,
+  /\b(baby|babies|he|she)\b[^.]{0,30}(stopped moving|not moving|isn.?t moving|hasn.?t moved|less movement|fewer movements)/i,
+  /soaking[^.]{0,20}(pad|pads|towel)/i,
 ];
 
 // Words used in the rules above. A typed word that is a small spelling slip away from one of these is corrected
@@ -60,6 +66,7 @@ const EMERGENCY_WORDS = [
   'suicidal', 'kill', 'killing', 'myself', 'hurt', 'hurting', 'harm', 'harming', 'vision', 'stroke', 'attack',
   'heart', 'having', 'spreads', 'spreading', 'radiates', 'radiating', 'moves', 'jaw', 'shoulder', 'back', 'stool',
   'black', 'tarry', 'rigid', 'belly', 'stomach', 'abdomen', 'painful', 'pain', 'stop', 'coughing',
+  'pregnant', 'pregnancy', 'soaking', 'terrible', 'baby', 'moving', 'moved', 'pads', 'towel',
 ];
 
 // Number of single-letter changes, insertions, deletions or swapped neighbours between two words

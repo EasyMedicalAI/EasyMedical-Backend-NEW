@@ -1366,6 +1366,1060 @@
         "Intermetatarsal neuroma"
       ],
       "keyword": "neuroma"
+    },
+    {
+      "id": "common-cold",
+      "story": "My nose is stuffy, my throat is sore, and I have been sneezing for four days. I have a mild cough and a low fever.",
+      "accept": [
+        "Common cold",
+        "Acute upper respiratory infection"
+      ],
+      "keyword": "common cold"
+    },
+    {
+      "id": "hyperlipidemia",
+      "story": "I feel fine, but a blood test showed high cholesterol. My father had heart disease at fifty.",
+      "accept": [
+        "Hyperlipidemia",
+        "High cholesterol",
+        "Dyslipidemia"
+      ],
+      "keyword": "hyperlipidemia"
+    },
+    {
+      "id": "low-back-pain",
+      "story": "My lower back aches after lifting boxes at work. It eases with rest and walking, and my legs feel normal.",
+      "accept": [
+        "Low back pain",
+        "Nonspecific low back pain",
+        "Lumbar strain"
+      ],
+      "keyword": "back pain"
+    },
+    {
+      "id": "heart-failure",
+      "story": "My ankles swell by evening, and I need an extra pillow at night. Walking uphill tires me out.",
+      "accept": [
+        "Heart failure",
+        "Congestive heart failure"
+      ],
+      "keyword": "heart failure"
+    },
+    {
+      "id": "obesity",
+      "story": "My weight has risen steadily over ten years, and my body mass index is over 35. I want help with my weight.",
+      "accept": [
+        "Obesity"
+      ],
+      "keyword": "obesity"
+    },
+    {
+      "id": "erectile-dysfunction",
+      "story": "It has become harder to get and keep an erection over the past year.",
+      "accept": [
+        "Erectile dysfunction"
+      ],
+      "keyword": "erectile"
+    },
+    {
+      "id": "muscle-strain",
+      "story": "I pulled a muscle in the back of my thigh while running. It is tender, bruised and sore to walk on.",
+      "accept": [
+        "Muscle strain",
+        "Hamstring strain"
+      ],
+      "keyword": "strain"
+    },
+    {
+      "id": "tinea-corporis",
+      "story": "A ring-shaped, itchy, scaly patch on my trunk is spreading outward from the centre.",
+      "accept": [
+        "Tinea corporis",
+        "Ringworm"
+      ],
+      "keyword": "tinea"
+    },
+    {
+      "id": "prediabetes",
+      "story": "My doctor says my blood sugar is borderline. I am sometimes thirsty, and diabetes runs in my family.",
+      "accept": [
+        "Prediabetes",
+        "Impaired glucose tolerance"
+      ],
+      "keyword": "prediabetes"
+    },
+    {
+      "id": "vasovagal-syncope",
+      "story": "I felt faint and went pale when I stood up after a hot shower. It passed after I sat down.",
+      "accept": [
+        "Vasovagal syncope",
+        "Reflex syncope"
+      ],
+      "keyword": "syncope"
+    },
+    {
+      "id": "chronic-cough",
+      "story": "I have had a dry cough for two months. It is worse at night, and I have no fever.",
+      "accept": [
+        "Chronic cough",
+        "Postnasal drip"
+      ],
+      "keyword": "chronic cough"
+    },
+    {
+      "id": "nicotine-dependence",
+      "story": "I smoke about a pack a day and want to stop. I have tried before without success.",
+      "accept": [
+        "Nicotine dependence",
+        "Tobacco use disorder"
+      ],
+      "keyword": "nicotine"
+    },
+    {
+      "id": "acute-pharyngitis",
+      "story": "My throat has been sore for three days, and swallowing hurts. I have a runny nose but no cough.",
+      "accept": [
+        "Acute pharyngitis",
+        "Viral pharyngitis",
+        "Sore throat"
+      ],
+      "keyword": "pharyngitis"
+    },
+    {
+      "id": "lumbar-disc-herniation",
+      "story": "Pain shoots from my low back into my buttock and down the leg after I lifted a box. It is worse when I cough.",
+      "accept": [
+        "Lumbar disc herniation",
+        "Lumbar radiculopathy"
+      ],
+      "keyword": "disc herniation"
+    },
+    {
+      "id": "dental-caries",
+      "story": "My back tooth is sensitive to cold, and I can see a dark spot on it.",
+      "accept": [
+        "Dental caries",
+        "Tooth decay"
+      ],
+      "keyword": "caries"
+    },
+    {
+      "id": "gingivitis",
+      "story": "My gums bleed when I brush, and they look red and puffy.",
+      "accept": [
+        "Gingivitis",
+        "Periodontitis"
+      ],
+      "keyword": "gingivitis"
+    },
+    {
+      "id": "peripheral-artery-disease",
+      "story": "My calves cramp when I walk and ease after I rest. My feet feel cold, and one toe looks discoloured.",
+      "accept": [
+        "Peripheral artery disease",
+        "Intermittent claudication"
+      ],
+      "keyword": "peripheral arter"
+    },
+    {
+      "id": "chlamydia",
+      "story": "I have a discharge and burning when I pass urine, and I have a new partner.",
+      "accept": [
+        "Chlamydia",
+        "Chlamydial infection"
+      ],
+      "keyword": "chlamydia"
+    },
+    {
+      "id": "genital-herpes",
+      "story": "I have painful blisters around my genitals that have come back a few times.",
+      "accept": [
+        "Genital herpes",
+        "Herpes simplex"
+      ],
+      "keyword": "genital herpes"
+    },
+    {
+      "id": "blepharitis",
+      "story": "My eyelids are crusty and itchy in the morning, and the edges look red.",
+      "accept": [
+        "Blepharitis"
+      ],
+      "keyword": "blepharitis"
+    },
+    {
+      "id": "hordeolum",
+      "story": "A painful red bump on my upper eyelid has been growing for two days.",
+      "accept": [
+        "Hordeolum",
+        "Stye"
+      ],
+      "keyword": "hordeol"
+    },
+    {
+      "id": "presbyopia",
+      "story": "I now need reading glasses, and close work looks blurry even though distance is fine.",
+      "accept": [
+        "Presbyopia"
+      ],
+      "keyword": "presbyopia"
+    },
+    {
+      "id": "myopia",
+      "story": "Distance is blurry, and I need stronger glasses every year.",
+      "accept": [
+        "Myopia",
+        "Nearsightedness"
+      ],
+      "keyword": "myopia"
+    },
+    {
+      "id": "hand-osteoarthritis",
+      "story": "Bony knobs have formed at the ends of my finger joints, and my fingers ache in the morning.",
+      "accept": [
+        "Hand osteoarthritis",
+        "Osteoarthritis of the hand"
+      ],
+      "keyword": "hand osteoarthritis"
+    },
+    {
+      "id": "medication-overuse-headache",
+      "story": "I take painkillers most days for headaches, and the headaches seem to be getting more frequent.",
+      "accept": [
+        "Medication overuse headache",
+        "Medication-overuse headache"
+      ],
+      "keyword": "medication"
+    },
+    {
+      "id": "astigmatism",
+      "story": "Things look blurry and ghosted at every distance, and my eyes tire when I read.",
+      "accept": [
+        "Astigmatism"
+      ],
+      "keyword": "astigmatism"
+    },
+    {
+      "id": "insect-bites",
+      "story": "I have itchy, swollen bumps on my legs after a walk in the park, and new ones appear each day.",
+      "accept": [
+        "Insect bites",
+        "Arthropod bite reaction"
+      ],
+      "keyword": "bite"
+    },
+    {
+      "id": "sunburn",
+      "story": "My shoulders are red, painful and hot to touch after a day at the beach.",
+      "accept": [
+        "Sunburn"
+      ],
+      "keyword": "sunburn"
+    },
+    {
+      "id": "epistaxis",
+      "story": "My nose bleeds now and then, usually at night, and it stops within ten minutes.",
+      "accept": [
+        "Epistaxis",
+        "Nosebleed"
+      ],
+      "keyword": "epistaxis"
+    },
+    {
+      "id": "head-lice",
+      "story": "My scalp is itchy, and I can see tiny white eggs stuck to the hairs behind my ears.",
+      "accept": [
+        "Head lice",
+        "Pediculosis capitis"
+      ],
+      "keyword": "lice"
+    },
+    {
+      "id": "chickenpox",
+      "story": "Itchy blisters have spread across my body, and I have had a fever for a few days.",
+      "accept": [
+        "Chickenpox",
+        "Varicella"
+      ],
+      "keyword": "varicella"
+    },
+    {
+      "id": "hand-foot-mouth",
+      "story": "I have sores in my mouth and blister-like spots on my palms and soles, with a mild fever.",
+      "accept": [
+        "Hand, foot and mouth disease"
+      ],
+      "keyword": "hand, foot"
+    },
+    {
+      "id": "pityriasis-rosea",
+      "story": "A large oval patch appeared on my chest, and smaller patches have spread across my back.",
+      "accept": [
+        "Pityriasis rosea"
+      ],
+      "keyword": "pityriasis"
+    },
+    {
+      "id": "lipoma",
+      "story": "I have a soft, rubbery lump under my skin that moves when pressed. It is painless and grows slowly.",
+      "accept": [
+        "Lipoma"
+      ],
+      "keyword": "lipoma"
+    },
+    {
+      "id": "epidermoid-cyst",
+      "story": "I have a firm lump on my back with a blocked opening, and it sometimes smells.",
+      "accept": [
+        "Epidermoid cyst",
+        "Sebaceous cyst"
+      ],
+      "keyword": "epidermoid"
+    },
+    {
+      "id": "nasal-polyps",
+      "story": "My nose has been blocked for months, and I cannot smell much at all.",
+      "accept": [
+        "Nasal polyps",
+        "Nasal polyposis"
+      ],
+      "keyword": "nasal polyp"
+    },
+    {
+      "id": "deviated-septum",
+      "story": "One side of my nose is always blocked, and it bleeds sometimes.",
+      "accept": [
+        "Deviated nasal septum",
+        "Nasal septal deviation"
+      ],
+      "keyword": "septum"
+    },
+    {
+      "id": "xerostomia",
+      "story": "My mouth is always dry, especially at night, and my teeth feel sticky.",
+      "accept": [
+        "Xerostomia",
+        "Dry mouth"
+      ],
+      "keyword": "xerostomia"
+    },
+    {
+      "id": "aphthous-ulcers",
+      "story": "I get painful round ulcers inside my cheeks that heal in a week or two.",
+      "accept": [
+        "Recurrent aphthous stomatitis",
+        "Canker sores"
+      ],
+      "keyword": "aphthous"
+    },
+    {
+      "id": "motion-sickness",
+      "story": "I feel sick and dizzy in cars and on boats.",
+      "accept": [
+        "Motion sickness"
+      ],
+      "keyword": "motion sickness"
+    },
+    {
+      "id": "osteopenia",
+      "story": "A bone scan showed thinning bones, but I have had no fractures.",
+      "accept": [
+        "Osteopenia",
+        "Low bone mass"
+      ],
+      "keyword": "osteopenia"
+    },
+    {
+      "id": "keloid",
+      "story": "A thick, raised scar has grown beyond the cut after my ear piercing.",
+      "accept": [
+        "Keloid",
+        "Keloid scar"
+      ],
+      "keyword": "keloid"
+    },
+    {
+      "id": "hyperhidrosis",
+      "story": "I sweat heavily on my palms and soles, even when I am cool.",
+      "accept": [
+        "Hyperhidrosis",
+        "Excessive sweating"
+      ],
+      "keyword": "hyperhidrosis"
+    },
+    {
+      "id": "onychomycosis",
+      "story": "My big toenails are thick, yellow and crumbly, and they are separating from the nail bed.",
+      "accept": [
+        "Onychomycosis",
+        "Toenail fungus"
+      ],
+      "keyword": "onychomycosis"
+    },
+    {
+      "id": "ingrown-toenail",
+      "story": "The edge of my big toenail is red, swollen and tender on one side.",
+      "accept": [
+        "Ingrown toenail",
+        "Onychocryptosis"
+      ],
+      "keyword": "ingrown"
+    },
+    {
+      "id": "corns",
+      "story": "A hard, painful patch of thick skin has formed on the top of my little toe.",
+      "accept": [
+        "Corns",
+        "Calluses"
+      ],
+      "keyword": "corn"
+    },
+    {
+      "id": "ovarian-cyst",
+      "story": "My lower belly aches on one side, and my periods have become irregular.",
+      "accept": [
+        "Ovarian cyst",
+        "Functional ovarian cyst"
+      ],
+      "keyword": "ovarian cyst"
+    },
+    {
+      "id": "dysmenorrhea",
+      "story": "I have severe cramps in my lower belly during the first days of every period.",
+      "accept": [
+        "Primary dysmenorrhea",
+        "Menstrual cramps"
+      ],
+      "keyword": "dysmenorrhea"
+    },
+    {
+      "id": "pyelonephritis",
+      "story": "I have a sore back on one side, burning when I pass urine, and I feel shivery.",
+      "accept": [
+        "Pyelonephritis",
+        "Kidney infection"
+      ],
+      "keyword": "pyelonephritis"
+    },
+    {
+      "id": "tonsillitis",
+      "story": "My tonsils are swollen and sore for three days, and I have a fever. I do not have a cough.",
+      "accept": [
+        "Tonsillitis",
+        "Acute tonsillitis"
+      ],
+      "keyword": "tonsillitis"
+    },
+    {
+      "id": "gestational-diabetes",
+      "story": "I am 26 weeks pregnant and failed the sugar test. I am very thirsty and passing a lot of urine.",
+      "accept": [
+        "Gestational diabetes",
+        "Gestational diabetes mellitus"
+      ],
+      "keyword": "gestational diabetes"
+    },
+    {
+      "id": "hyperemesis-gravidarum",
+      "story": "I am 9 weeks pregnant and cannot keep food or water down for days. I have lost weight.",
+      "accept": [
+        "Hyperemesis gravidarum"
+      ],
+      "keyword": "hyperemesis"
+    },
+    {
+      "id": "morning-sickness",
+      "story": "I am 8 weeks pregnant and feel sick most mornings, but I can keep my fluids down.",
+      "accept": [
+        "Nausea and vomiting of pregnancy",
+        "Morning sickness"
+      ],
+      "keyword": "pregnancy"
+    },
+    {
+      "id": "anemia-pregnancy",
+      "story": "I am 30 weeks pregnant. I am very tired and pale, and I feel dizzy when I stand up.",
+      "accept": [
+        "Anemia in pregnancy",
+        "Iron deficiency anemia"
+      ],
+      "keyword": "anemia"
+    },
+    {
+      "id": "uti-pregnancy",
+      "story": "I am 20 weeks pregnant, and it burns when I pass urine. I need to go often.",
+      "accept": [
+        "Urinary tract infection in pregnancy",
+        "Urinary tract infection"
+      ],
+      "keyword": "urinary tract infection"
+    },
+    {
+      "id": "pelvic-girdle-pain",
+      "story": "I am 32 weeks pregnant, and my pelvis hurts when I walk or roll over in bed.",
+      "accept": [
+        "Pelvic girdle pain",
+        "Symphysis pubis dysfunction"
+      ],
+      "keyword": "pelvic girdle"
+    },
+    {
+      "id": "postpartum-depression",
+      "story": "I had my baby six weeks ago. I cry most days, I feel no connection with her, and I cannot sleep even when she sleeps.",
+      "accept": [
+        "Postpartum depression",
+        "Perinatal depression"
+      ],
+      "keyword": "postpartum depression"
+    },
+    {
+      "id": "mastitis",
+      "story": "I am breastfeeding, and one breast is red, hot and painful. I have a fever and feel like I have the flu.",
+      "accept": [
+        "Mastitis",
+        "Lactation mastitis"
+      ],
+      "keyword": "mastitis"
+    },
+    {
+      "id": "gestational-hypertension",
+      "story": "I am 34 weeks pregnant. My blood pressure was high at the midwife visit, and I have no headache.",
+      "accept": [
+        "Gestational hypertension",
+        "Pregnancy-induced hypertension"
+      ],
+      "keyword": "gestational hypertension"
+    },
+    {
+      "id": "cholestasis-pregnancy",
+      "story": "I am 34 weeks pregnant and the itch on my palms and soles is intense, especially at night.",
+      "accept": [
+        "Intrahepatic cholestasis of pregnancy",
+        "Obstetric cholestasis"
+      ],
+      "keyword": "cholestasis"
+    },
+    {
+      "id": "postpartum-incontinence",
+      "story": "Since having my baby I leak a little when I laugh, jump or cough.",
+      "accept": [
+        "Stress urinary incontinence",
+        "Postpartum urinary incontinence"
+      ],
+      "keyword": "urinary incontinence"
+    },
+    {
+      "id": "diastasis-recti",
+      "story": "Since the birth there is a gap down the middle of my stomach muscles, and my tummy bulges when I sit up.",
+      "accept": [
+        "Diastasis recti",
+        "Abdominal muscle separation"
+      ],
+      "keyword": "diastasis"
+    },
+    {
+      "id": "pelvic-organ-prolapse",
+      "story": "I feel a dragging in my vagina, and something bulges when I strain or stand for long.",
+      "accept": [
+        "Pelvic organ prolapse",
+        "Uterine prolapse"
+      ],
+      "keyword": "prolapse"
+    },
+    {
+      "id": "abnormal-uterine-bleeding",
+      "story": "I have bleeding between my periods and sometimes after sex.",
+      "accept": [
+        "Abnormal uterine bleeding",
+        "Intermenstrual bleeding"
+      ],
+      "keyword": "uterine bleeding"
+    },
+    {
+      "id": "endometrial-hyperplasia",
+      "story": "My periods have been heavy and irregular, and I have had some spotting since my last period.",
+      "accept": [
+        "Endometrial hyperplasia"
+      ],
+      "keyword": "endometrial"
+    },
+    {
+      "id": "pelvic-inflammatory-disease",
+      "story": "I have lower belly pain with a fever, unusual discharge, and pain during sex.",
+      "accept": [
+        "Pelvic inflammatory disease"
+      ],
+      "keyword": "pelvic inflammatory"
+    },
+    {
+      "id": "vulvodynia",
+      "story": "My vulva has burned and stung for months, although there is no visible rash.",
+      "accept": [
+        "Vulvodynia",
+        "Vulvar vestibulitis"
+      ],
+      "keyword": "vulvodynia"
+    },
+    {
+      "id": "lupus-kidney",
+      "story": "I am tired, my ankles are swollen, my urine looks foamy, my joints ache, and a rash across my face gets worse in the sun.",
+      "accept": [
+        "Systemic lupus erythematosus",
+        "Lupus nephritis"
+      ],
+      "keyword": "lupus"
+    },
+    {
+      "id": "diabetic-foot",
+      "story": "I have type 2 diabetes. My feet are numb, there is a sore on my heel that is slow to heal, and my vision has been blurred.",
+      "accept": [
+        "Diabetic foot ulcer",
+        "Diabetic neuropathy",
+        "Type 2 diabetes"
+      ],
+      "keyword": "diabetic"
+    },
+    {
+      "id": "hypothyroid-depression",
+      "story": "I am exhausted and have had low mood for months. I am always cold, constipated, and my periods are heavy.",
+      "accept": [
+        "Hypothyroidism",
+        "Depression"
+      ],
+      "keyword": "hypothyroid"
+    },
+    {
+      "id": "anemia-celiac",
+      "story": "I am tired and pale, I bloat after meals, my bowel habits alternate, and my periods have been very heavy.",
+      "accept": [
+        "Iron deficiency anemia",
+        "Celiac disease"
+      ],
+      "keyword": "anemia"
+    },
+    {
+      "id": "psoriatic-ibd",
+      "story": "My finger joints are swollen and painful, I have scaly patches on my skin, and I have diarrhea with blood on and off.",
+      "accept": [
+        "Psoriatic arthritis",
+        "Inflammatory bowel disease"
+      ],
+      "keyword": "psoriatic"
+    },
+    {
+      "id": "gout-stones-htn",
+      "story": "My big toe suddenly became hot and swollen. I have had kidney stones before, and my blood pressure is high.",
+      "accept": [
+        "Gout",
+        "Acute gout"
+      ],
+      "keyword": "gout"
+    },
+    {
+      "id": "hyperthyroid-af",
+      "story": "My heart beats fast and irregularly, I have lost weight without trying, I feel hot all the time, and my hands tremble.",
+      "accept": [
+        "Atrial fibrillation",
+        "Hyperthyroidism"
+      ],
+      "keyword": "atrial"
+    },
+    {
+      "id": "migraine-aura-pill",
+      "story": "Before a headache on one side I see flashing lights in my vision, then I feel sick. I take the contraceptive pill.",
+      "accept": [
+        "Migraine with aura",
+        "Migraine"
+      ],
+      "keyword": "migraine"
+    },
+    {
+      "id": "apnea-htn-obesity",
+      "story": "I snore loudly and wake unrefreshed. My blood pressure is high even on tablets, and my weight has gone up.",
+      "accept": [
+        "Obstructive sleep apnea",
+        "Sleep apnea"
+      ],
+      "keyword": "sleep apnea"
+    },
+    {
+      "id": "copd-hf",
+      "story": "I have a chronic cough with phlegm, my ankles are swollen, and I get tired climbing stairs. I smoked for years.",
+      "accept": [
+        "Chronic obstructive pulmonary disease",
+        "Heart failure"
+      ],
+      "keyword": "obstructive pulmonary"
+    },
+    {
+      "id": "depression-back-pain",
+      "story": "I have had back pain for two years. My mood is low, I have lost interest in things, and my sleep is poor.",
+      "accept": [
+        "Depression",
+        "Chronic low back pain"
+      ],
+      "keyword": "depress"
+    },
+    {
+      "id": "fibromyalgia-hypothyroid",
+      "story": "I ache all over, sleep badly, feel cold all the time, and I am constipated.",
+      "accept": [
+        "Fibromyalgia",
+        "Hypothyroidism"
+      ],
+      "keyword": "fibromyalgia"
+    },
+    {
+      "id": "ra-anemia",
+      "story": "My hands are swollen on both sides in the morning, I am tired, and I look pale.",
+      "accept": [
+        "Rheumatoid arthritis",
+        "Anemia of chronic disease"
+      ],
+      "keyword": "rheumatoid"
+    },
+    {
+      "id": "pmr-gca",
+      "story": "My shoulders and hips are stiff, my jaw hurts when I chew, and my scalp is tender to touch.",
+      "accept": [
+        "Polymyalgia rheumatica",
+        "Giant cell arteritis"
+      ],
+      "keyword": "polymyalgia"
+    },
+    {
+      "id": "celiac-osteoporosis",
+      "story": "I have bloating and weight loss, and I broke a bone after a minor fall.",
+      "accept": [
+        "Celiac disease",
+        "Osteoporosis"
+      ],
+      "keyword": "celiac"
+    },
+    {
+      "id": "af-heart-failure",
+      "story": "My ankles swell, my heartbeat is irregular, and I feel tired most of the time.",
+      "accept": [
+        "Atrial fibrillation",
+        "Heart failure"
+      ],
+      "keyword": "atrial"
+    },
+    {
+      "id": "ckd-diabetes-htn",
+      "story": "I feel tired, my skin is itchy, my ankles are swollen, I am very thirsty, and my blood pressure is high.",
+      "accept": [
+        "Chronic kidney disease",
+        "Type 2 diabetes"
+      ],
+      "keyword": "chronic kidney"
+    },
+    {
+      "id": "endometriosis-ibs",
+      "story": "My periods are very painful, and I have bowel cramps and bloating during them. I also have pain during sex.",
+      "accept": [
+        "Endometriosis",
+        "Irritable bowel syndrome"
+      ],
+      "keyword": "endometriosis"
+    },
+    {
+      "id": "pcos-prediabetes-depression",
+      "story": "My periods are irregular, I have facial hair and weight gain, my blood sugar is borderline, and my mood is low.",
+      "accept": [
+        "Polycystic ovary syndrome",
+        "Prediabetes"
+      ],
+      "keyword": "polycystic"
+    },
+    {
+      "id": "menopause-depression",
+      "story": "I have hot flushes and broken sleep, my mood is low and I am irritable, and my periods stopped a year ago.",
+      "accept": [
+        "Menopause",
+        "Perimenopause",
+        "Depression"
+      ],
+      "keyword": "menopaus"
+    },
+    {
+      "id": "anxiety-ibs",
+      "story": "I worry constantly, and I have bloating and cramping that come and go with my stress.",
+      "accept": [
+        "Generalized anxiety disorder",
+        "Irritable bowel syndrome"
+      ],
+      "keyword": "anxiety"
+    },
+    {
+      "id": "adhd-anxiety-insomnia",
+      "story": "I have had trouble focusing since school. I also worry a lot, and I cannot switch off at night.",
+      "accept": [
+        "Attention-deficit/hyperactivity disorder",
+        "ADHD",
+        "Generalized anxiety disorder"
+      ],
+      "keyword": "attention-deficit"
+    },
+    {
+      "id": "bipolar-insomnia",
+      "story": "I have stretches of very high energy with almost no sleep, which alternate with weeks of low mood.",
+      "accept": [
+        "Bipolar disorder",
+        "Bipolar I disorder",
+        "Bipolar II disorder"
+      ],
+      "keyword": "bipolar"
+    },
+    {
+      "id": "lyme-arthritis",
+      "story": "I had a red ring on my thigh after camping. Weeks later my knee swelled up and is painful.",
+      "accept": [
+        "Lyme disease",
+        "Lyme arthritis"
+      ],
+      "keyword": "lyme"
+    },
+    {
+      "id": "postherpetic",
+      "story": "I had a strip of blisters on my back three weeks ago, and the burning pain there has not gone away.",
+      "accept": [
+        "Postherpetic neuralgia",
+        "Shingles"
+      ],
+      "keyword": "postherpetic"
+    },
+    {
+      "id": "sciatica-diabetes",
+      "story": "Pain runs down the back of my thigh, and my feet feel numb. I have type 2 diabetes.",
+      "accept": [
+        "Sciatica",
+        "Diabetic neuropathy"
+      ],
+      "keyword": "sciatica"
+    },
+    {
+      "id": "carpal-hypothyroid",
+      "story": "My hands go numb at night, I am always cold, and I feel tired all the time.",
+      "accept": [
+        "Carpal tunnel syndrome",
+        "Hypothyroidism"
+      ],
+      "keyword": "carpal"
+    },
+    {
+      "id": "knee-oa-obesity-diabetes",
+      "story": "My knees ache on the stairs, my weight has gone up, and my blood sugar is high.",
+      "accept": [
+        "Knee osteoarthritis",
+        "Osteoarthritis"
+      ],
+      "keyword": "osteoarthritis"
+    },
+    {
+      "id": "asthma-reflux",
+      "story": "I wheeze at night, I have a burning feeling in my throat after meals, and I cough in the mornings.",
+      "accept": [
+        "Asthma",
+        "Gastroesophageal reflux disease"
+      ],
+      "keyword": "asthma"
+    },
+    {
+      "id": "atopic-triad",
+      "story": "My eyes itch in spring, I wheeze sometimes, and I have an itchy rash inside my elbows.",
+      "accept": [
+        "Allergic rhinitis",
+        "Asthma",
+        "Atopic dermatitis"
+      ],
+      "keyword": "allergic"
+    },
+    {
+      "id": "psoriasis-depression-htn",
+      "story": "I have scaly patches on my elbows and scalp, my mood is low, and I take tablets for blood pressure.",
+      "accept": [
+        "Plaque psoriasis",
+        "Psoriasis",
+        "Depression"
+      ],
+      "keyword": "psoriasis"
+    },
+    {
+      "id": "hidradenitis-diabetes",
+      "story": "I have painful lumps in my groin that burst and drain. My weight is up, and my blood sugar is high.",
+      "accept": [
+        "Hidradenitis suppurativa",
+        "Acne inversa"
+      ],
+      "keyword": "hidradenitis"
+    },
+    {
+      "id": "reflux-hiatal",
+      "story": "I have burning reflux, a cough at night, and I feel full after small meals.",
+      "accept": [
+        "Gastroesophageal reflux disease",
+        "Hiatal hernia"
+      ],
+      "keyword": "reflux"
+    },
+    {
+      "id": "hypothyroid-anemia",
+      "story": "I am tired, cold and constipated, my periods are heavy, and I look pale.",
+      "accept": [
+        "Hypothyroidism",
+        "Iron deficiency anemia"
+      ],
+      "keyword": "hypothyroid"
+    },
+    {
+      "id": "migraine-htn",
+      "story": "I get headaches with nausea on one side of my head. My blood pressure is high, and I worry a lot.",
+      "accept": [
+        "Migraine",
+        "Hypertension"
+      ],
+      "keyword": "migraine"
+    },
+    {
+      "id": "cough-reflux-smoker",
+      "story": "I have a dry cough at night and burning reflux. I smoke every day.",
+      "accept": [
+        "Chronic cough",
+        "Gastroesophageal reflux disease",
+        "Chronic obstructive pulmonary disease"
+      ],
+      "keyword": "cough"
+    },
+    {
+      "id": "recurrent-uti-diabetes",
+      "story": "I have had burning when I pass urine three times this year. I am very thirsty, and my blood sugar is high.",
+      "accept": [
+        "Urinary tract infection",
+        "Type 2 diabetes"
+      ],
+      "keyword": "urinary tract infection"
+    },
+    {
+      "id": "stones-diabetes",
+      "story": "I have pain in my side that moves toward my groin, and my urine looks pink. I have type 2 diabetes.",
+      "accept": [
+        "Kidney stones",
+        "Urolithiasis"
+      ],
+      "keyword": "kidney stone"
+    },
+    {
+      "id": "vestibular-migraine",
+      "story": "I have spinning spells with a headache, and bright light bothers me during them.",
+      "accept": [
+        "Vestibular migraine",
+        "BPPV"
+      ],
+      "keyword": "vestibular"
+    },
+    {
+      "id": "tinnitus-hearing-anxiety",
+      "story": "I have ringing in both ears and I cannot follow phone calls. I feel anxious about it.",
+      "accept": [
+        "Tinnitus",
+        "Presbycusis",
+        "Age-related hearing loss"
+      ],
+      "keyword": "tinnitus"
+    },
+    {
+      "id": "dry-eye-joints",
+      "story": "My mouth and eyes are dry, my joints ache, and I am very tired.",
+      "accept": [
+        "Sjögren syndrome",
+        "Dry eye disease"
+      ],
+      "keyword": "sjögren"
+    },
+    {
+      "id": "cataract-diabetes",
+      "story": "My vision is cloudy, my blood sugar has been high, and my glasses prescription keeps changing.",
+      "accept": [
+        "Cataract"
+      ],
+      "keyword": "cataract"
+    },
+    {
+      "id": "glaucoma-diabetes",
+      "story": "I have patchy blind spots and see halos around lights. My blood sugar has been poorly controlled.",
+      "accept": [
+        "Glaucoma",
+        "Diabetic retinopathy"
+      ],
+      "keyword": "glaucoma"
+    },
+    {
+      "id": "amd-htn",
+      "story": "There is a blurry spot in the centre of my vision when I read, and my blood pressure is high.",
+      "accept": [
+        "Age-related macular degeneration",
+        "Macular degeneration"
+      ],
+      "keyword": "macular"
+    },
+    {
+      "id": "parkinson-depression",
+      "story": "My right hand shakes at rest, I walk more slowly, and my mood has been low.",
+      "accept": [
+        "Parkinson disease",
+        "Parkinson's disease",
+        "Depression"
+      ],
+      "keyword": "parkinson"
+    },
+    {
+      "id": "tremor-anxiety",
+      "story": "My hands shake when I write, and the shaking gets worse when I am stressed.",
+      "accept": [
+        "Essential tremor",
+        "Anxiety"
+      ],
+      "keyword": "essential tremor"
+    },
+    {
+      "id": "dementia-depression",
+      "story": "I keep forgetting things, my mood is low, and I have lost interest in my hobbies.",
+      "accept": [
+        "Mild cognitive impairment",
+        "Dementia",
+        "Depression"
+      ],
+      "keyword": "dementia"
+    },
+    {
+      "id": "hypoglycemia-anxiety",
+      "story": "I feel shaky, sweaty and my heart pounds when I skip meals. I also worry a lot.",
+      "accept": [
+        "Hypoglycemia",
+        "Generalized anxiety disorder"
+      ],
+      "keyword": "hypoglycemia"
+    },
+    {
+      "id": "thyroid-anxiety",
+      "story": "I have a lump at the front of my neck, my heart races, and I am anxious most of the time.",
+      "accept": [
+        "Thyroid nodule",
+        "Hyperthyroidism",
+        "Generalized anxiety disorder"
+      ],
+      "keyword": "thyroid"
+    },
+    {
+      "id": "insomnia-pain-depression",
+      "story": "I cannot sleep, my back hurts all day, and I have lost interest in things.",
+      "accept": [
+        "Insomnia",
+        "Depression",
+        "Chronic low back pain"
+      ],
+      "keyword": "insomnia"
     }
   ]
 }
