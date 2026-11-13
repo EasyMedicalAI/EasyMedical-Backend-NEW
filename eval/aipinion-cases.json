@@ -926,6 +926,443 @@
         "Vitiligo"
       ],
       "keyword": "vitiligo"
+    },
+    {
+      "id": "common-warts",
+      "story": "Rough, painful bumps have been growing on my fingers for months.",
+      "accept": [
+        "Common warts",
+        "Verruca vulgaris"
+      ],
+      "keyword": "wart"
+    },
+    {
+      "id": "cellulitis",
+      "story": "A red, hot, swollen patch on my lower leg is spreading, and I feel feverish.",
+      "accept": [
+        "Cellulitis"
+      ],
+      "keyword": "cellulitis"
+    },
+    {
+      "id": "varicose-veins",
+      "story": "Twisted veins bulge on my legs and ache after standing, worse in the evening, with some ankle swelling.",
+      "accept": [
+        "Varicose veins",
+        "Chronic venous insufficiency"
+      ],
+      "keyword": "varicose"
+    },
+    {
+      "id": "raynaud",
+      "story": "My fingers turn white and then blue in the cold, and then red and throbbing as they warm up.",
+      "accept": [
+        "Raynaud phenomenon",
+        "Raynaud disease"
+      ],
+      "keyword": "raynaud"
+    },
+    {
+      "id": "ankylosing-spondylitis",
+      "story": "My lower back is stiff, worst in the morning, and it eases with exercise. The pain wakes me in the second half of the night.",
+      "accept": [
+        "Ankylosing spondylitis",
+        "Axial spondyloarthritis"
+      ],
+      "keyword": "spondyl"
+    },
+    {
+      "id": "thyroid-nodule",
+      "story": "There is a lump at the front of my neck that moves when I swallow. It does not hurt.",
+      "accept": [
+        "Thyroid nodule",
+        "Goiter"
+      ],
+      "keyword": "thyroid nodule"
+    },
+    {
+      "id": "hemochromatosis",
+      "story": "I am tired, my knuckles ache, and my skin has a bronze tint. A relative had too much iron in the blood.",
+      "accept": [
+        "Hereditary hemochromatosis",
+        "Hemochromatosis"
+      ],
+      "keyword": "hemochromatosis"
+    },
+    {
+      "id": "osteoporosis",
+      "story": "My back has become rounded and I have lost height. I broke a wrist after a small fall.",
+      "accept": [
+        "Osteoporosis"
+      ],
+      "keyword": "osteoporosis"
+    },
+    {
+      "id": "appendicitis",
+      "story": "The pain started around my belly button and moved to my lower right side. I have no appetite and feel sick.",
+      "accept": [
+        "Appendicitis",
+        "Acute appendicitis"
+      ],
+      "keyword": "appendicitis"
+    },
+    {
+      "id": "anal-fissure",
+      "story": "Passing a bowel movement causes sharp pain, and I see a little bright red blood on the paper afterwards.",
+      "accept": [
+        "Anal fissure"
+      ],
+      "keyword": "fissure"
+    },
+    {
+      "id": "hiatal-hernia",
+      "story": "Heartburn gets worse when I bend over, and food sometimes feels stuck. I feel full after small meals.",
+      "accept": [
+        "Hiatal hernia",
+        "Gastroesophageal reflux disease"
+      ],
+      "keyword": "hiatal"
+    },
+    {
+      "id": "gastritis",
+      "story": "I have a burning feeling in my upper belly after meals, with nausea and bloating. I have been taking anti-inflammatory pills for my back.",
+      "accept": [
+        "Gastritis",
+        "Chronic gastritis"
+      ],
+      "keyword": "gastritis"
+    },
+    {
+      "id": "oral-thrush",
+      "story": "White patches inside my mouth wipe off and leave raw red areas. My tongue burns, and I use an inhaler.",
+      "accept": [
+        "Oral candidiasis",
+        "Oral thrush"
+      ],
+      "keyword": "candid"
+    },
+    {
+      "id": "cold-sores",
+      "story": "I get a tingling on my lip, then small fluid-filled blisters that crust over within a week.",
+      "accept": [
+        "Herpes labialis",
+        "Cold sores"
+      ],
+      "keyword": "herpes"
+    },
+    {
+      "id": "impetigo",
+      "story": "Yellow crusted sores have appeared around my nose. They spread and itch.",
+      "accept": [
+        "Impetigo"
+      ],
+      "keyword": "impetigo"
+    },
+    {
+      "id": "scabies",
+      "story": "I have intense itching at night and a rash between my fingers and on my wrists. Others at home are itchy too.",
+      "accept": [
+        "Scabies"
+      ],
+      "keyword": "scabies"
+    },
+    {
+      "id": "lyme-disease",
+      "story": "A red ring has spread on my thigh after a walk in the woods. I feel tired and have a headache.",
+      "accept": [
+        "Lyme disease",
+        "Erythema migrans"
+      ],
+      "keyword": "lyme"
+    },
+    {
+      "id": "influenza",
+      "story": "I got a sudden fever today, with aches all over my body, a dry cough and tiredness.",
+      "accept": [
+        "Influenza",
+        "Flu"
+      ],
+      "keyword": "influenza"
+    },
+    {
+      "id": "covid-19",
+      "story": "For three days I have had a sore throat, cough and tiredness, and I have lost my sense of taste and smell.",
+      "accept": [
+        "COVID-19",
+        "SARS-CoV-2 infection"
+      ],
+      "keyword": "covid"
+    },
+    {
+      "id": "strep-throat",
+      "story": "My throat is very sore, with white patches on my tonsils. I have a fever and tender lumps in my neck.",
+      "accept": [
+        "Streptococcal pharyngitis",
+        "Strep throat"
+      ],
+      "keyword": "pharyngitis"
+    },
+    {
+      "id": "dental-abscess",
+      "story": "A throbbing pain in a lower back tooth keeps me awake. My cheek is puffy and warm, and hot drinks make the tooth ache.",
+      "accept": [
+        "Dental abscess",
+        "Periapical abscess"
+      ],
+      "keyword": "abscess"
+    },
+    {
+      "id": "temporomandibular",
+      "story": "My jaw clicks and aches when I chew, and sometimes it locks for a moment when I open my mouth.",
+      "accept": [
+        "Temporomandibular disorder",
+        "Temporomandibular joint disorder"
+      ],
+      "keyword": "temporomandibular"
+    },
+    {
+      "id": "ganglion-cyst",
+      "story": "A firm, round lump on the back of my wrist comes and goes. It is not very painful.",
+      "accept": [
+        "Ganglion cyst"
+      ],
+      "keyword": "ganglion"
+    },
+    {
+      "id": "baker-cyst",
+      "story": "There is a swelling behind my knee that gets bigger after I have bent my knee for a long time.",
+      "accept": [
+        "Baker cyst",
+        "Popliteal cyst"
+      ],
+      "keyword": "baker"
+    },
+    {
+      "id": "meralgia",
+      "story": "I have burning and numbness on the outer thigh, worse when I stand. My leg strength is normal.",
+      "accept": [
+        "Meralgia paresthetica"
+      ],
+      "keyword": "meralgia"
+    },
+    {
+      "id": "bruxism",
+      "story": "I wake with a sore jaw and headaches, and my partner says I grind my teeth at night.",
+      "accept": [
+        "Sleep bruxism",
+        "Bruxism"
+      ],
+      "keyword": "bruxism"
+    },
+    {
+      "id": "vestibular-neuritis",
+      "story": "The room has spun for days, with nausea and walking that feels unsteady. My hearing is normal.",
+      "accept": [
+        "Vestibular neuritis",
+        "Labyrinthitis"
+      ],
+      "keyword": "vestibular neuritis"
+    },
+    {
+      "id": "earwax",
+      "story": "My ear feels full, my hearing is muffled, and I have been using cotton buds to clean it.",
+      "accept": [
+        "Earwax impaction",
+        "Cerumen impaction"
+      ],
+      "keyword": "cerumen"
+    },
+    {
+      "id": "eustachian-tube",
+      "story": "My ears feel blocked when I fly or have a cold. They pop, but they do not hurt.",
+      "accept": [
+        "Eustachian tube dysfunction"
+      ],
+      "keyword": "eustachian"
+    },
+    {
+      "id": "otitis-externa",
+      "story": "My ear canal is itchy and painful after swimming, and it hurts when I pull on my ear.",
+      "accept": [
+        "Otitis externa",
+        "Swimmer ear"
+      ],
+      "keyword": "otitis externa"
+    },
+    {
+      "id": "orthostatic-hypotension",
+      "story": "I feel dizzy and light-headed when I stand up quickly. It passes after a few seconds.",
+      "accept": [
+        "Orthostatic hypotension",
+        "Postural hypotension"
+      ],
+      "keyword": "orthostatic"
+    },
+    {
+      "id": "overactive-bladder",
+      "story": "I rush to the toilet and sometimes leak before I get there. I get up six times a night to pass urine.",
+      "accept": [
+        "Overactive bladder"
+      ],
+      "keyword": "overactive bladder"
+    },
+    {
+      "id": "stress-incontinence",
+      "story": "I leak a little urine when I cough, sneeze or lift something heavy.",
+      "accept": [
+        "Stress urinary incontinence",
+        "Urinary incontinence"
+      ],
+      "keyword": "urinary incontinence"
+    },
+    {
+      "id": "vaginal-thrush",
+      "story": "I have itching and thick white discharge, and it burns when I pass urine.",
+      "accept": [
+        "Vulvovaginal candidiasis",
+        "Vaginal yeast infection"
+      ],
+      "keyword": "candid"
+    },
+    {
+      "id": "bacterial-vaginosis",
+      "story": "I have a thin grey discharge with a fishy smell, and it is worse after sex.",
+      "accept": [
+        "Bacterial vaginosis"
+      ],
+      "keyword": "bacterial vaginosis"
+    },
+    {
+      "id": "uterine-fibroids",
+      "story": "My periods are very heavy with clots, and I feel pressure low in my belly.",
+      "accept": [
+        "Uterine fibroids",
+        "Leiomyoma"
+      ],
+      "keyword": "fibroid"
+    },
+    {
+      "id": "gastroparesis",
+      "story": "I feel full very quickly when I eat and have nausea afterwards. Food seems to sit in my stomach.",
+      "accept": [
+        "Gastroparesis"
+      ],
+      "keyword": "gastroparesis"
+    },
+    {
+      "id": "crohn-disease",
+      "story": "I have had diarrhea, some blood, belly cramps and weight loss for months.",
+      "accept": [
+        "Crohn disease",
+        "Inflammatory bowel disease"
+      ],
+      "keyword": "crohn"
+    },
+    {
+      "id": "hyperparathyroidism",
+      "story": "My bones ache, I have had kidney stones, I am constipated, and I feel tired and thirsty.",
+      "accept": [
+        "Primary hyperparathyroidism",
+        "Hyperparathyroidism"
+      ],
+      "keyword": "parathyroid"
+    },
+    {
+      "id": "cushing-syndrome",
+      "story": "My face has become round, I have purple stretch marks, and I have gained weight around my middle.",
+      "accept": [
+        "Cushing syndrome",
+        "Cushing disease"
+      ],
+      "keyword": "cushing"
+    },
+    {
+      "id": "sarcoidosis",
+      "story": "I have had a dry cough and tiredness for weeks, and painful red bumps have appeared on my shins.",
+      "accept": [
+        "Sarcoidosis"
+      ],
+      "keyword": "sarcoidosis"
+    },
+    {
+      "id": "alopecia-areata",
+      "story": "Round, smooth patches of hair have fallen out on my scalp. They appeared quite suddenly.",
+      "accept": [
+        "Alopecia areata"
+      ],
+      "keyword": "alopecia areata"
+    },
+    {
+      "id": "androgenetic-alopecia",
+      "story": "My hair has been thinning at the crown and temples over several years.",
+      "accept": [
+        "Androgenetic alopecia",
+        "Male pattern hair loss"
+      ],
+      "keyword": "alopecia"
+    },
+    {
+      "id": "contact-dermatitis",
+      "story": "A red, itchy rash appeared where my watch touches my wrist, after I changed the strap.",
+      "accept": [
+        "Allergic contact dermatitis",
+        "Contact dermatitis"
+      ],
+      "keyword": "contact dermatitis"
+    },
+    {
+      "id": "chronic-fatigue",
+      "story": "I am exhausted for months, and resting does not help. Activity leaves me crashing for days.",
+      "accept": [
+        "Myalgic encephalomyelitis",
+        "Chronic fatigue syndrome"
+      ],
+      "keyword": "chronic fatigue"
+    },
+    {
+      "id": "narcolepsy",
+      "story": "I have sudden urges to sleep during the day, even after a full night. Laughing sometimes makes my legs go weak.",
+      "accept": [
+        "Narcolepsy"
+      ],
+      "keyword": "narcolepsy"
+    },
+    {
+      "id": "social-anxiety",
+      "story": "I dread social situations and avoid meetings. I blush and feel my heart pounding when people look at me.",
+      "accept": [
+        "Social anxiety disorder",
+        "Social phobia"
+      ],
+      "keyword": "social anxiety"
+    },
+    {
+      "id": "dementia",
+      "story": "I keep forgetting recent conversations, and I have got lost in familiar places.",
+      "accept": [
+        "Alzheimer disease",
+        "Mild cognitive impairment",
+        "Dementia"
+      ],
+      "keyword": "alzheimer"
+    },
+    {
+      "id": "hallux-valgus",
+      "story": "A bony bump on the side of my big toe rubs against my shoes and is sore.",
+      "accept": [
+        "Hallux valgus",
+        "Bunion"
+      ],
+      "keyword": "hallux"
+    },
+    {
+      "id": "morton-neuroma",
+      "story": "A burning pain between my third and fourth toes feels like standing on a pebble.",
+      "accept": [
+        "Morton neuroma",
+        "Intermetatarsal neuroma"
+      ],
+      "keyword": "neuroma"
     }
   ]
 }
