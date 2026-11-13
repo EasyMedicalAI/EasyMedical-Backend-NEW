@@ -47,8 +47,69 @@ const EMERGENCY_PATTERNS = [
   /(belly|stomach|abdomen) (is )?(very painful|rigid)|rigid (belly|stomach|abdomen)|severe (belly|stomach|abdominal) pain/i,
 ];
 
+// Words used in the rules above. A typed word that is a small spelling slip away from one of these is corrected
+// before the rules run, so 'breahte' still counts as 'breathe'. Words of 3 letters or fewer are never changed.
+const EMERGENCY_WORDS = [
+  'chest', 'pressure', 'tightness', 'tight', 'feels', 'feel', 'trouble', 'difficulty', 'breathing', 'breathe',
+  'breath', 'catch', 'short', 'shortness', 'hard', 'time', 'lips', 'lip', 'look', 'looks', 'turning', 'turned',
+  'went', 'goes', 'gone', 'blue', 'fingers', 'finger', 'skin', 'nails', 'nail', 'arm', 'weak', 'numb', 'left',
+  'right', 'suddenly', 'sudden', 'face', 'droop', 'drooping', 'speech', 'slurred', 'weakness', 'numbness',
+  'confusion', 'confused', 'headache', 'worst', 'severe', 'passed', 'passing', 'fainted', 'unconscious', 'seizure',
+  'bleeding', 'bleed', 'blood', 'heavily', 'heavy', 'lots', 'vomiting', 'vomit', 'throat', 'swelling', 'swollen',
+  'closing', 'tongue', 'swallow', 'anaphylaxis', 'stiff', 'neck', 'fever', 'high', 'temperature', 'suicide',
+  'suicidal', 'kill', 'killing', 'myself', 'hurt', 'hurting', 'harm', 'harming', 'vision', 'stroke', 'attack',
+  'heart', 'having', 'spreads', 'spreading', 'radiates', 'radiating', 'moves', 'jaw', 'shoulder', 'back', 'stool',
+  'black', 'tarry', 'rigid', 'belly', 'stomach', 'abdomen', 'painful', 'pain', 'stop', 'coughing',
+];
+
+// Number of single-letter changes, insertions, deletions or swapped neighbours between two words
+function editDistance(a, b) {
+  const d = [];
+  for (let i = 0; i <= a.length; i += 1) d.push([i]);
+  for (let j = 0; j <= b.length; j += 1) d[0][j] = j;
+  for (let i = 1; i <= a.length; i += 1) {
+    for (let j = 1; j <= b.length; j += 1) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+      }
+    }
+  }
+  return d[a.length][b.length];
+}
+
+// Corrects small spelling slips. A word may be one letter off, and a word of 6 or more letters may be two letters
+// off when it keeps its length and first letter ('stroak' is 'stroke'). Corrections must be within one letter in
+// length, so 'gained' is not changed to 'fainted'. When two words are equally close (such as 'hart', one step from
+// 'hard' and from 'heart'), preferLast chooses the other one.
+function correctTypos(text, preferLast = false) {
+  return String(text).toLowerCase().replace(/[a-z']+/g, (word) => {
+    if (word.length < 4 || EMERGENCY_WORDS.includes(word)) return word;
+    let best = word;
+    let bestDistance = 3;
+    for (const candidate of EMERGENCY_WORDS) {
+      if (Math.abs(candidate.length - word.length) > 1) continue;
+      const distance = editDistance(word, candidate);
+      const acceptable =
+        distance === 1 ||
+        (distance === 2 && word.length >= 6 && candidate.length === word.length && candidate[0] === word[0]);
+      if (!acceptable) continue;
+      if (distance < bestDistance) {
+        best = candidate;
+        bestDistance = distance;
+      } else if (preferLast && distance === bestDistance) {
+        best = candidate;
+      }
+    }
+    return best;
+  });
+}
+
+// Checks the text as typed, and with spelling slips corrected both ways, so typos cannot hide a warning sign
 function emergencyReason(text) {
-  return EMERGENCY_PATTERNS.some((pattern) => pattern.test(text));
+  const variants = [text, correctTypos(text, false), correctTypos(text, true)];
+  return EMERGENCY_PATTERNS.some((pattern) => variants.some((v) => pattern.test(v)));
 }
 
 // Sources the person's areas point to. Only approved sources are used, unless the test switch is on.
@@ -233,4 +294,4 @@ function mountTriageRoutes(app, client) {
   });
 }
 
-module.exports = { mountTriageRoutes, emergencyReason, EMERGENCY_PATTERNS, selectSources, groundReasons };
+module.exports = { mountTriageRoutes, emergencyReason, correctTypos, EMERGENCY_PATTERNS, selectSources, groundReasons };
