@@ -1,53 +1,931 @@
 {
-  "_about": "Made-up symptom descriptions for checking AI-pinion. Each case lists conditions that should appear in the top three, and a keyword that a relevant article title should contain. Add real cases only with the person's agreement, and never commit personal details.",
+  "_about": "Made-up symptom descriptions for checking AI-pinion. 'accept' lists the names that count as a correct answer for the case (the first is the name to search PubMed with). Add real cases only with the person's agreement, and never commit personal details. Overlapping cases are included on purpose: they test whether the three possibilities cover the likely options.",
   "cases": [
     {
       "id": "gout-big-toe",
       "story": "My big toe suddenly became very painful, red and hot overnight. It woke me up and it was too sore to put a sock on.",
-      "expect_any_of": ["Gout"],
+      "accept": [
+        "Gout",
+        "Acute gout",
+        "Gout flare"
+      ],
       "keyword": "gout"
     },
     {
       "id": "psoriatic-arthritis",
       "story": "My fingers and toes swell and hurt, mostly on one side. I also have scaly red patches on my elbows and scalp, and some of my fingernails have small pits in them.",
-      "expect_any_of": ["Psoriatic arthritis"],
+      "accept": [
+        "Psoriatic arthritis",
+        "PsA",
+        "Psoriatic disease"
+      ],
       "keyword": "psoriatic arthritis"
     },
     {
       "id": "rheumatoid-arthritis",
       "story": "My hands and wrists are stiff for more than an hour every morning. The small joints of my fingers swell on both sides, and I feel tired most days.",
-      "expect_any_of": ["Rheumatoid arthritis"],
+      "accept": [
+        "Rheumatoid arthritis",
+        "RA"
+      ],
       "keyword": "rheumatoid arthritis"
     },
     {
       "id": "carpal-tunnel",
       "story": "My thumb, index and middle fingers go numb and tingle. It is worst at night and when I type for a long time, and I sometimes drop things.",
-      "expect_any_of": ["Carpal tunnel syndrome"],
+      "accept": [
+        "Carpal tunnel syndrome",
+        "Carpal tunnel",
+        "Median neuropathy at the wrist"
+      ],
       "keyword": "carpal tunnel"
     },
     {
       "id": "hypothyroidism",
       "story": "I am always tired and feel cold when others do not. I have gained weight without changing how I eat, my skin is dry, and I am constipated most of the time.",
-      "expect_any_of": ["Hypothyroidism"],
+      "accept": [
+        "Hypothyroidism",
+        "Underactive thyroid",
+        "Low thyroid"
+      ],
       "keyword": "hypothyroidism"
     },
     {
       "id": "iron-deficiency",
       "story": "I am very tired and get short of breath climbing stairs. I look pale, and my periods have been very heavy for the last few months.",
-      "expect_any_of": ["Iron deficiency anemia", "Anemia"],
+      "accept": [
+        "Iron deficiency anemia",
+        "Iron deficiency",
+        "Anemia"
+      ],
       "keyword": "anemia"
     },
     {
       "id": "migraine",
       "story": "I get a throbbing headache on one side of my head, with feeling sick to my stomach. Bright lights make it worse, and it lasts several hours.",
-      "expect_any_of": ["Migraine"],
+      "accept": [
+        "Migraine",
+        "Migraine headache",
+        "Migraine without aura"
+      ],
       "keyword": "migraine"
     },
     {
       "id": "systemic-lupus",
       "story": "My joints ache in several places, and a red rash across my cheeks gets worse in the sun. I have had sores in my mouth and I am tired all the time.",
-      "expect_any_of": ["Systemic lupus erythematosus", "Lupus"],
+      "accept": [
+        "Systemic lupus erythematosus",
+        "Lupus",
+        "SLE"
+      ],
       "keyword": "lupus"
+    },
+    {
+      "id": "tension-headache",
+      "story": "A dull ache wraps around my forehead on both sides, most afternoons after long days at the computer. Nausea and light sensitivity are not a problem for me.",
+      "accept": [
+        "Tension-type headache",
+        "Tension headache"
+      ],
+      "keyword": "tension"
+    },
+    {
+      "id": "sciatica",
+      "story": "A shooting pain runs from my lower back down the back of my left leg to the foot. It is worse when I sit for a long time, and my leg feels weak at times.",
+      "accept": [
+        "Sciatica",
+        "Lumbar radiculopathy",
+        "Lumbar disc herniation"
+      ],
+      "keyword": "sciatica"
+    },
+    {
+      "id": "plantar-fasciitis",
+      "story": "A sharp pain sits under my heel, worst with the first few steps in the morning. It eases after I walk a bit, then comes back after I have been standing.",
+      "accept": [
+        "Plantar fasciitis",
+        "Heel pain"
+      ],
+      "keyword": "plantar fasciitis"
+    },
+    {
+      "id": "type-2-diabetes",
+      "story": "I am very thirsty all the time and I pass urine often, even at night. I have lost weight without trying, and I feel tired after meals.",
+      "accept": [
+        "Type 2 diabetes",
+        "Type 2 diabetes mellitus",
+        "Diabetes mellitus"
+      ],
+      "keyword": "diabetes"
+    },
+    {
+      "id": "shingles",
+      "story": "A burning, stabbing pain on one side of my body, and a band of small blisters has come up in the same place over two days.",
+      "accept": [
+        "Shingles",
+        "Herpes zoster"
+      ],
+      "keyword": "shingles"
+    },
+    {
+      "id": "shoulder-bursitis",
+      "story": "My shoulder hurts on the outside when I lift my arm above my head or reach behind my back. It is tender when I press on it, and it is worse at night.",
+      "accept": [
+        "Shoulder bursitis",
+        "Subacromial bursitis",
+        "Rotator cuff tendinopathy",
+        "Shoulder impingement"
+      ],
+      "keyword": "shoulder"
+    },
+    {
+      "id": "irritable-bowel",
+      "story": "I get cramping pain in my belly that eases after I go to the toilet. I also have bloating, and my stools alternate between loose and hard.",
+      "accept": [
+        "Irritable bowel syndrome",
+        "IBS"
+      ],
+      "keyword": "irritable bowel"
+    },
+    {
+      "id": "asthma",
+      "story": "I wheeze and cough at night, and it is worse with cold air or when I have a cold. My inhaler helps, but I need it more often than I used to.",
+      "accept": [
+        "Asthma"
+      ],
+      "keyword": "asthma"
+    },
+    {
+      "id": "depression",
+      "story": "For about a month I have lost interest in things I used to enjoy. I sleep badly, I feel down most days, and I am tired even after resting.",
+      "accept": [
+        "Major depressive disorder",
+        "Depression",
+        "Depressive disorder"
+      ],
+      "keyword": "depress"
+    },
+    {
+      "id": "b12-deficiency",
+      "story": "My feet and hands feel numb and tingly, I feel unsteady when I walk, and I have been very tired and forgetful lately.",
+      "accept": [
+        "Vitamin B12 deficiency",
+        "B12 deficiency",
+        "Cobalamin deficiency"
+      ],
+      "keyword": "b12"
+    },
+    {
+      "id": "cataract",
+      "story": "Things look cloudy and dim, as if I am looking through a frosted window. Bright light is glaring, and driving at night is harder than it was a year ago.",
+      "accept": [
+        "Cataract",
+        "Age-related cataract"
+      ],
+      "keyword": "cataract"
+    },
+    {
+      "id": "glaucoma",
+      "story": "I keep bumping into things on one side, and I see halos around lights. My eye aches now and then, and my glasses prescription keeps changing.",
+      "accept": [
+        "Glaucoma",
+        "Open-angle glaucoma"
+      ],
+      "keyword": "glaucoma"
+    },
+    {
+      "id": "gerd",
+      "story": "A burning feeling rises from my stomach into my throat after big meals. I get a sour taste, especially when I lie down at night.",
+      "accept": [
+        "Gastroesophageal reflux disease",
+        "GERD",
+        "Acid reflux"
+      ],
+      "keyword": "reflux"
+    },
+    {
+      "id": "peptic-ulcer",
+      "story": "A gnawing pain in the upper middle of my stomach eases a little after I eat, and it wakes me at night. I have been taking painkillers most days.",
+      "accept": [
+        "Peptic ulcer disease",
+        "Peptic ulcer",
+        "Gastric ulcer"
+      ],
+      "keyword": "peptic ulcer"
+    },
+    {
+      "id": "celiac",
+      "story": "I have had bloating, diarrhea and weight loss for months. My stools are pale and smell bad, and my skin is itchy.",
+      "accept": [
+        "Celiac disease",
+        "Coeliac disease"
+      ],
+      "keyword": "celiac"
+    },
+    {
+      "id": "gallstones",
+      "story": "I get pain under my right ribs that comes in waves after fatty meals. It settles after a few hours, and I often feel sick afterwards.",
+      "accept": [
+        "Gallstones",
+        "Cholelithiasis",
+        "Biliary colic"
+      ],
+      "keyword": "gallstone"
+    },
+    {
+      "id": "uti",
+      "story": "It burns when I pass urine, and I need to go all the time even though very little comes out. My urine looks cloudy.",
+      "accept": [
+        "Urinary tract infection",
+        "UTI",
+        "Cystitis"
+      ],
+      "keyword": "urinary tract infection"
+    },
+    {
+      "id": "kidney-stones",
+      "story": "I had a sudden, severe pain in my side that moves toward my groin. My urine looks pink, and I cannot get comfortable.",
+      "accept": [
+        "Kidney stones",
+        "Nephrolithiasis",
+        "Urolithiasis",
+        "Kidney stone",
+        "Ureteral stone"
+      ],
+      "keyword": "kidney stone"
+    },
+    {
+      "id": "bppv",
+      "story": "The room spins for a few seconds when I roll over in bed or tilt my head back. It passes quickly, but I feel unsteady afterwards.",
+      "accept": [
+        "Benign paroxysmal positional vertigo",
+        "BPPV",
+        "Positional vertigo"
+      ],
+      "keyword": "vertigo"
+    },
+    {
+      "id": "meniere",
+      "story": "I have ringing in my left ear and a feeling of fullness in it. Spinning spells last for hours, and my hearing on that side seems duller.",
+      "accept": [
+        "Meniere disease",
+        "Ménière's disease",
+        "Meniere's disease"
+      ],
+      "keyword": "meniere"
+    },
+    {
+      "id": "otitis-media",
+      "story": "My right ear has been painful for two days, with a fever. It feels blocked, and some fluid has drained out.",
+      "accept": [
+        "Acute otitis media",
+        "Ear infection",
+        "Otitis media"
+      ],
+      "keyword": "otitis media"
+    },
+    {
+      "id": "sinusitis",
+      "story": "I have thick yellow mucus, pressure behind my cheeks and forehead, and a blocked nose for more than ten days.",
+      "accept": [
+        "Chronic rhinosinusitis",
+        "Sinusitis",
+        "Acute bacterial sinusitis",
+        "Acute bacterial rhinosinusitis",
+        "Rhinosinusitis"
+      ],
+      "keyword": "sinusitis"
+    },
+    {
+      "id": "allergic-rhinitis",
+      "story": "Every spring I sneeze a lot and my nose itches and runs. My eyes water when the grass is cut.",
+      "accept": [
+        "Allergic rhinitis",
+        "Hay fever"
+      ],
+      "keyword": "rhinitis"
+    },
+    {
+      "id": "atopic-dermatitis",
+      "story": "An itchy, dry patch inside my elbows flares in winter. It turns red and cracked when I scratch it.",
+      "accept": [
+        "Atopic dermatitis",
+        "Eczema"
+      ],
+      "keyword": "atopic dermatitis"
+    },
+    {
+      "id": "hidradenitis",
+      "story": "I have painful lumps in my armpits and groin that keep coming back. Some burst and drain, and they leave scars.",
+      "accept": [
+        "Hidradenitis suppurativa",
+        "Acne inversa"
+      ],
+      "keyword": "hidradenitis"
+    },
+    {
+      "id": "plaque-psoriasis",
+      "story": "I have thick, silvery, scaly patches on my knees and lower back. They itch and sometimes bleed when I scratch them.",
+      "accept": [
+        "Plaque psoriasis",
+        "Psoriasis"
+      ],
+      "keyword": "psoriasis"
+    },
+    {
+      "id": "urticaria",
+      "story": "Raised, itchy welts come and go on my arms and body. Each one lasts a few hours, and they seem to move around.",
+      "accept": [
+        "Chronic urticaria",
+        "Hives",
+        "Urticaria"
+      ],
+      "keyword": "urticaria"
+    },
+    {
+      "id": "tinea-pedis",
+      "story": "I have a ring-shaped, scaly, itchy rash on my foot between the toes. It spreads slowly, and the skin peels.",
+      "accept": [
+        "Tinea pedis",
+        "Athlete's foot"
+      ],
+      "keyword": "tinea"
+    },
+    {
+      "id": "pseudogout",
+      "story": "My knee suddenly swelled and became hot and stiff. I had a similar flare in my wrist a while back.",
+      "accept": [
+        "Calcium pyrophosphate deposition disease",
+        "Pseudogout"
+      ],
+      "keyword": "pyrophosphate"
+    },
+    {
+      "id": "knee-osteoarthritis",
+      "story": "My knees ache after walking and feel stiff after sitting. The stiffness eases within half an hour, and it is worse in cold weather and on stairs.",
+      "accept": [
+        "Knee osteoarthritis",
+        "Osteoarthritis",
+        "Osteoarthritis of the knee"
+      ],
+      "keyword": "osteoarthritis"
+    },
+    {
+      "id": "achilles-tendinopathy",
+      "story": "I have a stiff, aching pain at the back of my ankle, just above the heel. It is worst in the morning and after running.",
+      "accept": [
+        "Achilles tendinopathy",
+        "Achilles tendinitis"
+      ],
+      "keyword": "achilles"
+    },
+    {
+      "id": "fibromyalgia",
+      "story": "I have had widespread aching all over my body for months. My sleep is poor, my mornings are stiff, and my head feels foggy.",
+      "accept": [
+        "Fibromyalgia"
+      ],
+      "keyword": "fibromyalgia"
+    },
+    {
+      "id": "polymyalgia-rheumatica",
+      "story": "My shoulders and hips are stiff and achy for weeks, worst when I wake up. I feel tired and a bit feverish, and my appetite is down.",
+      "accept": [
+        "Polymyalgia rheumatica"
+      ],
+      "keyword": "polymyalgia"
+    },
+    {
+      "id": "generalized-anxiety",
+      "story": "I worry about many things all day. My heart races for no clear reason, and I have trouble switching off at night.",
+      "accept": [
+        "Generalized anxiety disorder",
+        "Anxiety disorder",
+        "Anxiety"
+      ],
+      "keyword": "anxiety"
+    },
+    {
+      "id": "insomnia",
+      "story": "I lie awake for hours before I fall asleep, and I wake up several times a night. I feel exhausted in the daytime for months.",
+      "accept": [
+        "Insomnia",
+        "Chronic insomnia"
+      ],
+      "keyword": "insomnia"
+    },
+    {
+      "id": "sleep-apnea",
+      "story": "My partner says I stop breathing in my sleep, and I snore loudly. I wake with a dry mouth and headaches, and I feel sleepy during the day.",
+      "accept": [
+        "Obstructive sleep apnea",
+        "Sleep apnea"
+      ],
+      "keyword": "sleep apnea"
+    },
+    {
+      "id": "restless-legs",
+      "story": "In the evening I get an urge to move my legs, with crawling feelings that ease when I walk around. It keeps me awake.",
+      "accept": [
+        "Restless legs syndrome",
+        "Willis-Ekbom disease"
+      ],
+      "keyword": "restless legs"
+    },
+    {
+      "id": "hypertension",
+      "story": "My blood pressure was high at three checkups. I get occasional headaches in the morning, but I have no other symptoms.",
+      "accept": [
+        "Essential hypertension",
+        "Hypertension",
+        "High blood pressure"
+      ],
+      "keyword": "hypertension"
+    },
+    {
+      "id": "atrial-fibrillation",
+      "story": "My heartbeat feels irregular and fluttery at times, especially when I am resting. I feel tired, and it comes and goes.",
+      "accept": [
+        "Atrial fibrillation",
+        "AFib"
+      ],
+      "keyword": "atrial fibrillation"
+    },
+    {
+      "id": "vitamin-d",
+      "story": "My bones ache and my muscles feel weak. I rarely go outside, and my mood is low in the winter.",
+      "accept": [
+        "Vitamin D deficiency",
+        "Hypovitaminosis D"
+      ],
+      "keyword": "vitamin d"
+    },
+    {
+      "id": "hyperthyroidism",
+      "story": "I feel jittery, my heart feels fast, and I have lost weight even though I eat well. I sweat a lot, and my eyes look more prominent.",
+      "accept": [
+        "Hyperthyroidism",
+        "Graves disease",
+        "Graves' disease"
+      ],
+      "keyword": "hyperthyroidism"
+    },
+    {
+      "id": "pneumonia",
+      "story": "I have a cough with thick green phlegm, a fever for three days, and a stabbing pain when I breathe in. I feel weak and have no appetite.",
+      "accept": [
+        "Community-acquired pneumonia",
+        "Pneumonia"
+      ],
+      "keyword": "pneumonia"
+    },
+    {
+      "id": "bronchitis",
+      "story": "I have had a cough for three weeks with yellow mucus, a mild fever and a sore throat. My chest feels sore from coughing.",
+      "accept": [
+        "Acute bronchitis",
+        "Bronchitis"
+      ],
+      "keyword": "bronchitis"
+    },
+    {
+      "id": "copd",
+      "story": "I have a cough with phlegm most mornings, for years now. Hills leave me puffing, and I smoked for thirty years.",
+      "accept": [
+        "Chronic obstructive pulmonary disease",
+        "COPD"
+      ],
+      "keyword": "obstructive pulmonary"
+    },
+    {
+      "id": "gastroenteritis",
+      "story": "I have had watery diarrhea and vomiting since yesterday, with cramps and a mild temperature. Others at home have the same thing.",
+      "accept": [
+        "Viral gastroenteritis",
+        "Gastroenteritis"
+      ],
+      "keyword": "gastroenteritis"
+    },
+    {
+      "id": "hemorrhoids",
+      "story": "I have itching and a painful lump around my back passage. I saw a little blood on the toilet paper after a hard stool.",
+      "accept": [
+        "Hemorrhoids",
+        "Haemorrhoids",
+        "Piles",
+        "Thrombosed external hemorrhoid"
+      ],
+      "keyword": "hemorrhoid"
+    },
+    {
+      "id": "inguinal-hernia",
+      "story": "There is a bulge in my groin that gets bigger when I cough or lift, and it aches by the end of the day.",
+      "accept": [
+        "Inguinal hernia",
+        "Groin hernia"
+      ],
+      "keyword": "hernia"
+    },
+    {
+      "id": "lactose-intolerance",
+      "story": "I get bloating, gas and loose stools within a few hours of drinking milk. It settles when I avoid dairy.",
+      "accept": [
+        "Lactose intolerance"
+      ],
+      "keyword": "lactose intolerance"
+    },
+    {
+      "id": "cluster-headache",
+      "story": "I get severe pain around one eye that wakes me at night. My nose runs and my eye turns red, and each attack lasts about an hour.",
+      "accept": [
+        "Cluster headache"
+      ],
+      "keyword": "cluster headache"
+    },
+    {
+      "id": "trigeminal-neuralgia",
+      "story": "I get brief, electric-shock pain on one side of my jaw and cheek. It is set off by brushing my teeth or a cold breeze on my face.",
+      "accept": [
+        "Trigeminal neuralgia"
+      ],
+      "keyword": "trigeminal neuralgia"
+    },
+    {
+      "id": "bells-palsy",
+      "story": "One side of my face went stiff overnight, and I cannot close that eye properly. It came on suddenly, and my mouth feels heavy on one side.",
+      "accept": [
+        "Bell palsy",
+        "Bell's palsy"
+      ],
+      "keyword": "bell palsy"
+    },
+    {
+      "id": "peripheral-neuropathy",
+      "story": "I have burning and pins and needles in both feet, worse at night. My socks feel uncomfortable against my skin.",
+      "accept": [
+        "Peripheral neuropathy",
+        "Diabetic neuropathy"
+      ],
+      "keyword": "peripheral neuropathy"
+    },
+    {
+      "id": "essential-tremor",
+      "story": "My hands shake when I hold a cup or write, more than when they are resting. A few relatives have the same shake.",
+      "accept": [
+        "Essential tremor"
+      ],
+      "keyword": "essential tremor"
+    },
+    {
+      "id": "parkinson",
+      "story": "My right hand shakes when it is resting, my steps have become smaller, and my face looks less expressive, my partner says.",
+      "accept": [
+        "Parkinson disease",
+        "Parkinson's disease"
+      ],
+      "keyword": "parkinson"
+    },
+    {
+      "id": "endometriosis",
+      "story": "My periods are getting more painful each year. I also have pain during sex and a dull pelvic ache between periods.",
+      "accept": [
+        "Endometriosis"
+      ],
+      "keyword": "endometriosis"
+    },
+    {
+      "id": "pcos",
+      "story": "My periods have been irregular for years. I have extra facial hair, acne and weight gain, and we have had trouble getting pregnant.",
+      "accept": [
+        "Polycystic ovary syndrome",
+        "PCOS"
+      ],
+      "keyword": "polycystic ovary"
+    },
+    {
+      "id": "bph",
+      "story": "I get up three or four times a night to pass urine. The flow is weak and slow to start, and I feel I cannot empty fully.",
+      "accept": [
+        "Benign prostatic hyperplasia",
+        "Enlarged prostate",
+        "Benign prostatic enlargement",
+        "BPH"
+      ],
+      "keyword": "prostatic hyperplasia"
+    },
+    {
+      "id": "hypoglycemia",
+      "story": "I feel shaky, sweaty and very hungry, with a racing heart. It happens mostly before lunch or when I skip meals, and eating helps.",
+      "accept": [
+        "Hypoglycemia",
+        "Low blood sugar"
+      ],
+      "keyword": "hypoglycemia"
+    },
+    {
+      "id": "heat-exhaustion",
+      "story": "I was working outside in the heat all afternoon. Now I feel dizzy and sweaty, I feel sick to my stomach, and my legs are crampy.",
+      "accept": [
+        "Heat exhaustion",
+        "Heat-related illness"
+      ],
+      "keyword": "heat"
+    },
+    {
+      "id": "mononucleosis",
+      "story": "I have had a sore throat and swollen glands in my neck for two weeks. I am extremely tired and have had a fever on and off.",
+      "accept": [
+        "Infectious mononucleosis",
+        "Mononucleosis",
+        "Glandular fever"
+      ],
+      "keyword": "mononucleosis"
+    },
+    {
+      "id": "trigger-finger",
+      "story": "My ring finger locks bent in the morning and clicks when I straighten it. There is a tender lump at the base of my palm.",
+      "accept": [
+        "Trigger finger",
+        "Stenosing tenosynovitis"
+      ],
+      "keyword": "trigger finger"
+    },
+    {
+      "id": "de-quervain",
+      "story": "I have pain on the thumb side of my wrist when I grip something, lift a kettle or turn a doorknob.",
+      "accept": [
+        "De Quervain tenosynovitis",
+        "De Quervain's tenosynovitis"
+      ],
+      "keyword": "quervain"
+    },
+    {
+      "id": "dupuytren",
+      "story": "A thick cord has formed in my palm, and it pulls one finger down toward my hand. The skin over it feels firm.",
+      "accept": [
+        "Dupuytren contracture",
+        "Dupuytren disease",
+        "Dupuytren's contracture",
+        "Dupuytren's disease"
+      ],
+      "keyword": "dupuytren"
+    },
+    {
+      "id": "tennis-elbow",
+      "story": "I have pain on the outside of my elbow when I grip, lift a cup or hit a backhand. The pain is worse at the end of the day.",
+      "accept": [
+        "Lateral epicondylitis",
+        "Tennis elbow"
+      ],
+      "keyword": "epicondyl"
+    },
+    {
+      "id": "ankle-sprain",
+      "story": "I rolled my ankle playing football. It is swollen and bruised on the outside, and I can walk only with a limp.",
+      "accept": [
+        "Ankle sprain",
+        "Lateral ankle sprain"
+      ],
+      "keyword": "ankle sprain"
+    },
+    {
+      "id": "stress-fracture",
+      "story": "I have shin pain that gets worse when I run. There is a tender spot on the bone, and now it hurts even when I am resting.",
+      "accept": [
+        "Stress fracture",
+        "Tibial stress injury"
+      ],
+      "keyword": "stress fracture"
+    },
+    {
+      "id": "frozen-shoulder",
+      "story": "My shoulder has been getting stiffer and more painful over several months. I cannot reach behind my back, and it is hard to move it at all.",
+      "accept": [
+        "Adhesive capsulitis",
+        "Frozen shoulder"
+      ],
+      "keyword": "frozen shoulder"
+    },
+    {
+      "id": "hip-osteoarthritis",
+      "story": "My groin and hip ache when I walk, and they are stiff in the morning. It is hard to put my socks on.",
+      "accept": [
+        "Hip osteoarthritis",
+        "Osteoarthritis of the hip"
+      ],
+      "keyword": "hip"
+    },
+    {
+      "id": "spinal-stenosis",
+      "story": "My lower back aches and my legs feel tired when I walk. It eases when I lean forward on a shopping cart.",
+      "accept": [
+        "Lumbar spinal stenosis",
+        "Spinal stenosis"
+      ],
+      "keyword": "spinal stenosis"
+    },
+    {
+      "id": "neck-pain",
+      "story": "My neck is stiff and achy after long days at my desk. I have no pain or tingling in my arms.",
+      "accept": [
+        "Mechanical neck pain",
+        "Neck strain",
+        "Cervical spondylosis"
+      ],
+      "keyword": "neck pain"
+    },
+    {
+      "id": "costochondritis",
+      "story": "I have a sharp, tender pain along my ribs that gets worse when I press on them or take a deep breath.",
+      "accept": [
+        "Costochondritis",
+        "Chest wall pain"
+      ],
+      "keyword": "costochondritis"
+    },
+    {
+      "id": "functional-dyspepsia",
+      "story": "I feel full after a few bites, and I am bloated and have no appetite for months. I have not lost weight.",
+      "accept": [
+        "Functional dyspepsia",
+        "Dyspepsia"
+      ],
+      "keyword": "dyspepsia"
+    },
+    {
+      "id": "chronic-constipation",
+      "story": "I only go to the toilet about twice a week, and I have to strain. My stools are hard and small.",
+      "accept": [
+        "Chronic constipation",
+        "Constipation"
+      ],
+      "keyword": "constipation"
+    },
+    {
+      "id": "diverticulitis",
+      "story": "My lower left belly is tender, and I have a fever and constipation for two days. Eating has been uncomfortable.",
+      "accept": [
+        "Diverticulitis",
+        "Acute diverticulitis"
+      ],
+      "keyword": "diverticul"
+    },
+    {
+      "id": "fatty-liver",
+      "story": "I feel tired and have an ache under my right ribs. A blood test showed high liver enzymes, and I drink a few beers most nights.",
+      "accept": [
+        "Nonalcoholic fatty liver disease",
+        "Fatty liver disease"
+      ],
+      "keyword": "fatty liver"
+    },
+    {
+      "id": "chronic-kidney-disease",
+      "story": "My ankles are swollen and I am tired all the time. A blood test showed my kidneys are working less well than before, and my skin itches.",
+      "accept": [
+        "Chronic kidney disease"
+      ],
+      "keyword": "chronic kidney disease"
+    },
+    {
+      "id": "premenstrual",
+      "story": "In the week before my period my mood drops, and my breasts are tender and I feel bloated. It eases once the period starts.",
+      "accept": [
+        "Premenstrual syndrome",
+        "Premenstrual dysphoric disorder"
+      ],
+      "keyword": "premenstrual"
+    },
+    {
+      "id": "menopause",
+      "story": "I have hot flushes and night sweats, and my sleep is broken. My periods have been irregular for about a year.",
+      "accept": [
+        "Menopause",
+        "Perimenopause"
+      ],
+      "keyword": "menopaus"
+    },
+    {
+      "id": "bipolar",
+      "story": "I have had stretches of very high energy, little sleep and racing thoughts. They are followed by weeks of low mood.",
+      "accept": [
+        "Bipolar disorder",
+        "Bipolar I disorder",
+        "Bipolar II disorder"
+      ],
+      "keyword": "bipolar"
+    },
+    {
+      "id": "adhd",
+      "story": "I struggle to finish tasks, I lose things, and my mind wanders in meetings. This has been true since I was at school.",
+      "accept": [
+        "Attention-deficit/hyperactivity disorder",
+        "ADHD"
+      ],
+      "keyword": "attention-deficit"
+    },
+    {
+      "id": "panic-disorder",
+      "story": "I have sudden spells of intense fear, with a pounding heart and sweating that peak within minutes. I now avoid crowded places.",
+      "accept": [
+        "Panic disorder"
+      ],
+      "keyword": "panic disorder"
+    },
+    {
+      "id": "ptsd",
+      "story": "I have nightmares about an accident last year. I avoid driving past the place, and I startle easily.",
+      "accept": [
+        "Posttraumatic stress disorder",
+        "PTSD"
+      ],
+      "keyword": "traumatic stress"
+    },
+    {
+      "id": "ocd",
+      "story": "I check the stove and the door many times before I can leave. I also have unwanted thoughts that I cannot shake.",
+      "accept": [
+        "Obsessive-compulsive disorder",
+        "OCD"
+      ],
+      "keyword": "obsessive-compulsive"
+    },
+    {
+      "id": "tinnitus",
+      "story": "I have a constant high-pitched ringing in both ears for months, and it is worse at night.",
+      "accept": [
+        "Tinnitus"
+      ],
+      "keyword": "tinnitus"
+    },
+    {
+      "id": "hearing-loss",
+      "story": "I have to ask people to repeat themselves, especially in noisy restaurants. High-pitched sounds are hard to hear.",
+      "accept": [
+        "Presbycusis",
+        "Age-related hearing loss"
+      ],
+      "keyword": "presbycusis"
+    },
+    {
+      "id": "conjunctivitis",
+      "story": "Both eyes are red, itchy and watery, with sticky discharge in the morning. It started after a cold.",
+      "accept": [
+        "Conjunctivitis",
+        "Pink eye"
+      ],
+      "keyword": "conjunctivitis"
+    },
+    {
+      "id": "dry-eye",
+      "story": "My eyes feel gritty and burn, especially in front of a screen. Artificial tears help a little.",
+      "accept": [
+        "Dry eye disease",
+        "Dry eye syndrome"
+      ],
+      "keyword": "dry eye"
+    },
+    {
+      "id": "macular-degeneration",
+      "story": "There is a blurry spot in the centre of my vision when I read. Straight lines look wavy to me now.",
+      "accept": [
+        "Age-related macular degeneration",
+        "Macular degeneration"
+      ],
+      "keyword": "macular degeneration"
+    },
+    {
+      "id": "acne",
+      "story": "I have had pimples and oily skin on my face and back since my teens. Some of the red bumps are painful.",
+      "accept": [
+        "Acne vulgaris",
+        "Acne"
+      ],
+      "keyword": "acne"
+    },
+    {
+      "id": "rosacea",
+      "story": "My cheeks and nose flush and have red bumps. They burn when I drink hot drinks or eat spicy food.",
+      "accept": [
+        "Rosacea"
+      ],
+      "keyword": "rosacea"
+    },
+    {
+      "id": "seborrheic-dermatitis",
+      "story": "I have greasy, flaky scales on my scalp and eyebrows, with some redness underneath.",
+      "accept": [
+        "Seborrheic dermatitis"
+      ],
+      "keyword": "seborrheic"
+    },
+    {
+      "id": "vitiligo",
+      "story": "I have white patches on my hands and around my mouth, and they are slowly getting bigger.",
+      "accept": [
+        "Vitiligo"
+      ],
+      "keyword": "vitiligo"
     }
   ]
 }

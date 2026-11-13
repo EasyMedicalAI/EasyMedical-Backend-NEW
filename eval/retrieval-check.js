@@ -7,7 +7,7 @@ const cases = require('./aipinion-cases.json').cases;
   let hits = 0;
   let total = 0;
   for (const c of cases) {
-    for (const name of c.expect_any_of.slice(0, 1)) {
+    for (const name of c.accept.slice(0, 1)) {
       total += 1;
       let articles = [];
       try {

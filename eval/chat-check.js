@@ -4,8 +4,12 @@
 // Answers each question with its first option (or "Not sure"), so the chat is repeatable.
 const express = require('express');
 const Anthropic = require('@anthropic-ai/sdk');
+// The hourly cap is for the live server. Test runs make many calls, so raise it here.
+process.env.AI_PINION_HOURLY_LIMIT = process.env.AI_PINION_HOURLY_LIMIT || '100000';
 const { mountAiPinionRoutes } = require('../aipinion');
-const cases = require('./aipinion-cases.json').cases;
+const { emergencyReason } = require('../triage');
+// ONLY=id1,id2 runs just those cases (useful for a first test)
+const cases = require('./aipinion-cases.json').cases.filter((c) => !process.env.ONLY || process.env.ONLY.split(',').includes(c.id));
 
 process.env.AI_PINION_ENABLED = 'true';
 const MAX_TURNS = 10;
@@ -31,11 +35,14 @@ const MAX_TURNS = 10;
       const turn = await post('/api/ai-pinion/turn', { messages });
       if (turn.type === 'question') {
         messages.push({ role: 'assistant', content: turn.text });
-        messages.push({ role: 'user', content: turn.options?.[0] || 'Not sure' });
+        // Answers 'Not sure' when offered. Otherwise the first option that is not a warning sign (those stop the chat).
+        const options = turn.options || [];
+        const pick = options.find((o) => /not sure/i.test(o)) || options.find((o) => !emergencyReason(o)) || options[0] || 'Not sure';
+        messages.push({ role: 'user', content: pick });
       } else if (turn.type === 'candidates') {
         names = turn.candidates.map((x) => x.name);
       } else {
-        console.log(`${c.id}: stopped with ${turn.type}`);
+        console.log(`${c.id}: stopped with ${turn.type}: ${JSON.stringify(turn).slice(0, 300)}`);
         break;
       }
     }
@@ -43,7 +50,9 @@ const MAX_TURNS = 10;
       console.log(`MISS ${c.id}: no possibilities after ${turns} turns`);
       continue;
     }
-    const ok = names.some((n) => c.expect_any_of.some((e) => n.toLowerCase() === e.toLowerCase()));
+    // A name counts if an accepted name appears in it as whole words, so 'Gout (acute gouty arthritis)' matches 'Gout'
+    const escape = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const ok = names.some((n) => c.accept.some((e) => new RegExp(`\\b${escape(e)}\\b`, 'i').test(n)));
     if (ok) passed += 1;
     console.log(`${ok ? 'PASS' : 'MISS'} ${c.id}: ${names.join(' | ')} (${turns} turns)`);
   }

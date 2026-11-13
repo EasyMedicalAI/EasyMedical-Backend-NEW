@@ -1,0 +1,42 @@
+{
+  "_about": "Free safety checks (no model calls). 'should_stop' phrases describe warning signs that need emergency care now, so AI-pinion must stop before any model call. 'should_continue' phrases are ordinary, so the chat should carry on. A miss in should_stop is a safety gap to fix, not a test to delete.",
+  "should_stop": [
+    "I have crushing chest pain going down my left arm right now",
+    "I have chest pressure and I feel sweaty and sick",
+    "My chest feels tight and I can't catch my breath",
+    "It's hard to breathe and my lips look blue",
+    "My face is drooping on one side and my speech is slurred",
+    "My left arm went weak all of a sudden",
+    "I got the worst headache of my life, it came on in seconds",
+    "I passed out in the shower this morning",
+    "I fainted at work and hit my head",
+    "I'm coughing up blood",
+    "I'm vomiting blood",
+    "The bleeding won't stop after I cut my hand",
+    "My throat is closing up after the bee sting",
+    "My tongue is swollen and I can't swallow",
+    "I have a stiff neck and a high fever",
+    "I keep thinking about killing myself",
+    "I suddenly can't see out of my right eye",
+    "I had a seizure this morning",
+    "My arm is numb and I'm having trouble speaking",
+    "I think I'm having a heart attack",
+    "I think I'm having a stroke",
+    "The pain spreads to my jaw and I'm sweating a lot",
+    "I'm bleeding heavily from my leg",
+    "There is a lot of blood in my stool",
+    "My belly is very painful and rigid, and I can't stand up straight"
+  ],
+  "should_continue": [
+    "My big toe is red and sore.",
+    "I have a mild headache and feel tired.",
+    "My knee hurts when I climb stairs.",
+    "I've had a cough for two weeks.",
+    "My joints ache and I'm tired all the time.",
+    "I have a rash on my elbows that itches.",
+    "My thumb feels numb at night.",
+    "I had a chest x-ray last month and it was normal.",
+    "My fingers feel stiff in the morning.",
+    "I want to know what might be causing my back pain."
+  ]
+}

@@ -132,7 +132,7 @@ const FINDINGS_TOOL = {
 };
 
 // A simple cap per hour across the server, to limit model costs
-const MAX_PER_HOUR = 60;
+const MAX_PER_HOUR = Number(process.env.AI_PINION_HOURLY_LIMIT) || 60;
 const HOUR_MS = 60 * 60 * 1000;
 let windowStart = Date.now();
 let windowCount = 0;
@@ -214,15 +214,16 @@ async function askStep(client, model, messages, finishNow) {
   }
   const response = await client.messages.create({
     model,
-    max_tokens: 1200,
+    max_tokens: 2500,
     system: ASK_PROMPT,
     tools: [NEXT_STEP_TOOL],
-    tool_choice: { type: 'auto' },
+    // Only one tool exists, so the model must call it
+    tool_choice: { type: 'any' },
     messages: modelMessages,
   });
   if (response.stop_reason === 'refusal') return { refused: true };
   const toolUse = response.content.find((block) => block.type === 'tool_use' && block.name === NEXT_STEP_TOOL.name);
-  return { input: toolUse?.input || null };
+  return { input: toolUse?.input || null, stopReason: response.stop_reason };
 }
 
 // Searches PubMed for each candidate, then has the model cite only those articles.
@@ -262,7 +263,7 @@ async function findingsFor(client, messages, candidates) {
 
     const response = await client.messages.create({
       model: MODEL,
-      max_tokens: 2000,
+      max_tokens: 3000,
       system: GROUND_PROMPT,
       tools: [FINDINGS_TOOL],
       tool_choice: { type: 'auto' },
@@ -335,12 +336,17 @@ function mountAiPinionRoutes(app, client) {
       const userTurns = messages.filter((m) => m.role === 'user').length;
       const finishNow = userTurns >= MAX_USER_TURNS;
 
-      const step = await askStep(client, MODEL, messages, finishNow);
+      // The model occasionally answers in plain text instead of calling its tool. One retry fixes that.
+      let step = await askStep(client, MODEL, messages, finishNow);
+      if (!step.refused && !step.input) step = await askStep(client, MODEL, messages, finishNow);
       if (step.refused) {
         return res.status(422).json({ error: 'AI-pinion cannot help with this here. Please talk with a clinician.' });
       }
       const input = step.input;
-      if (!input) return res.status(502).json({ error: 'AI-pinion could not respond. Please try again.' });
+      if (!input) {
+        console.error('AI-pinion: no next_step result, stop_reason:', step.stopReason);
+        return res.status(502).json({ error: 'AI-pinion could not respond. Please try again.' });
+      }
 
       if (input.action === 'ask' && !finishNow) {
         const question = cleanText(input.question, 500);

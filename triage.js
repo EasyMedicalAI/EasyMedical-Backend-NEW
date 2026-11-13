@@ -34,6 +34,17 @@ const EMERGENCY_PATTERNS = [
   /stiff neck.*(fever|high temperature)|(fever|high temperature).*stiff neck/i,
   /suicid|kill myself|want to die|hurt myself|harm myself/i,
   /sudden (loss of )?vision|can.?t see/i,
+  /kill(ing)? myself|hurt(ing)? myself|harm(ing)? myself/i,
+  /chest (feels? )?tight|tight chest/i,
+  /can.?t catch (my|your|his|her) breath|hard (time|to) breath/i,
+  /(lips?|fingers?|skin|nails?) (look|are|turn(ing|ed)?|went|goes|gone) blue|blue lips/i,
+  /(left |right )?arm (is |went |has gone |feels |suddenly )*(weak|numb)/i,
+  /tongue (is )?swollen|can.?t swallow/i,
+  /having (a )?(heart attack|stroke)/i,
+  /pain (spreads|spreading|radiates|radiating|goes|going|moves) (to|down) (my )?(jaw|arm|shoulder|neck|back)/i,
+  /(won.?t|will not|doesn.?t|does not) stop bleeding|bleeding (won.?t|will not|doesn.?t|does not) stop|bleeding (heavily|a lot)|heavy bleeding|lots? of blood/i,
+  /blood in (my |the )?(stool|poo|poop|faeces|feces)|black (tarry )?stool/i,
+  /(belly|stomach|abdomen) (is )?(very painful|rigid)|rigid (belly|stomach|abdomen)|severe (belly|stomach|abdominal) pain/i,
 ];
 
 function emergencyReason(text) {
